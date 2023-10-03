@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Traveler Compass.props" />
+</Project>
