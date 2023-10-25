@@ -61,13 +61,10 @@ namespace Traveler_Compass.Controllers
             await userRepository.CreateUserAsync(user); //take in the user and pass it to the UserRepo
 
 
-
-
-
             //Map back from model to Dto
-            var response = new UserDto
+            var response = new UserDTO
             {
-                userId = user.userId,
+               // userId = user.userId,
                 firstName = user.firstName,
                 lastName = user.lastName,
                 email = user.email,
@@ -80,31 +77,31 @@ namespace Traveler_Compass.Controllers
         }
 
 
-        [HttpPut("{string}")]
-        public async Task<IActionResult> UpdateUser(string userid, [FromBody] User user)
-        {
-            if(userid != user.userId)
-            {
-                return BadRequest("ID mismatch between URL and user data.");
+        //[HttpPut("{string}")]
+        //public async Task<IActionResult> UpdateUser(string userid, [FromBody] User user)
+        //{
+        //    if(userid != user.userId)
+        //    {
+        //        return BadRequest("ID mismatch between URL and user data.");
 
-            }
-            try
-            {
-                userRepository.UpdateUserAsync(userid, user);
-                return Ok();
-            }
-            catch(Exception ex) 
-            {
+        //    }
+        //    try
+        //    {
+        //        userRepository.UpdateUserAsync(userid, user);
+        //        return Ok();
+        //    }
+        //    catch(Exception ex) 
+        //    {
 
-                return StatusCode(500, "Internal server error");
+        //        return StatusCode(500, "Internal server error");
 
-            }
+        //    }
 
-        }
+        //}
 
         [HttpDelete]
        // [Route("{string}")]
-        public async Task<IActionResult> DeleteUser(string userId)
+        public async Task<IActionResult> DeleteUser(int userId)
 
         {
             var seletctedUser = await userRepository.DeleteUserAsync(userId);

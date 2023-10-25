@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Traveler_Compass.Data;
 
@@ -11,9 +12,11 @@ using Traveler_Compass.Data;
 namespace Traveler_Compass.Migrations
 {
     [DbContext(typeof(CompassDbContext))]
-    partial class CompassDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231023212517_Initial_Migration")]
+    partial class Initial_Migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -35,12 +35,12 @@ namespace Traveler_Compass.Repository.Implementation
 
         //To update current user
       
-        public async Task<User> UpdateUserAsync(string userId, User user)
+        public async Task<User> UpdateUserAsync(int userId, User user)
         {
             var updateUser = dbContext.users.FindAsync(userId);
           if (updateUser != null)
             {
-                user.userId = user.userId;
+               // user.userId = user.userId;
                 user.firstName = user.firstName;
                 user.lastName = user.lastName;
                 user.email = user.email;
@@ -55,8 +55,9 @@ namespace Traveler_Compass.Repository.Implementation
              return user;
 
         }
-         
-        public async Task<User> DeleteUserAsync(string userId)
+
+        [HttpDelete]
+        public async Task<User> DeleteUserAsync(int userId)
 
         { 
             

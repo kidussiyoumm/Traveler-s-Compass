@@ -1,10 +1,10 @@
 ﻿namespace Traveler_Compass.Models.DTO
 {
-    public class UserDto
+    public class UserDTO
     {// will have all the info required to the user 
 
 
-        public string userId { get; set; }
+       // public string userId { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string email { get; set; }

@@ -25,6 +25,7 @@ builder.Services.AddDbContext<CompassDbContext>(options =>
 
 builder.Services.AddScoped<IUserRepository, UserRepository>(); //Injecting a Service inisde the program.cs file
                                                                //If we want an implementation class coming from the UserRepository 
+builder.Services.AddScoped<IPackageRepository, PackageRepository>();
 
 
 var app = builder.Build();
