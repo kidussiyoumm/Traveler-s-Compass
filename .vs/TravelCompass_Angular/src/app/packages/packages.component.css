@@ -1,0 +1,13 @@
+.proImg {
+    height: 250px;
+    width: 200px;
+}
+.card{
+    height: 300px;
+    width: 225px;
+}
+.h7 {
+    font-size: 15px; /* Example size */
+    font-weight: bold; /* Example styles */
+    /* Other styling properties */
+}
