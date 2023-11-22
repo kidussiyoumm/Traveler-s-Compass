@@ -1,0 +1,41 @@
+[
+    {
+     "Id": 1,
+     "Name" : "Bali Package",
+     "Price" : 3500,
+     "Image" : "bali.webp"
+   },
+ 
+   {
+     "Id": 2,
+     "Name" : "Athenes Package",
+     "Price" : 4500,
+     "Image" : "Athenes.webp"
+   },
+ 
+   {"Id": 3,
+   "Name" : "Japan Package",
+   "Price" : 5000,
+   "Image" : "Japan.jpeg"
+   },
+ 
+   {"Id": 4,
+ "Name" : "Turkey Package",
+ "Price" : 5000,
+ "Image" : "Turkey.webp"
+   },
+   {"Id": 5,
+ "Name" : "Thailand Package",
+ "Price" : 5000,
+ "Image" : "Thailand.jpg" 
+   },
+ 
+   {"Id": 6,
+ "Name" : "Zanzibar Package",
+ "Price" : 5000,
+ "Image" : "Zanzibar.webp" 
+   }
+   
+   
+   
+ ]
