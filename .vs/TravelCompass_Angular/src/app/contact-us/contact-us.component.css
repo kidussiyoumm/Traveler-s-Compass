@@ -1,0 +1,24 @@
+.class-header {
+    margin-left: 15px; /* Adjust as needed */
+     }
+  
+  .custom-lightest-header {
+    background-color: #f0f0f0; /* Lightest gray color */
+    color: #000000; /* Black text color for contrast */
+    padding-left: 2rem; /* Adjust left padding as needed */
+    padding-right: 2rem; /* Adjust right padding as needed */
+    margin-left: -15px; /* Compensate for negative margin added by Bootstrap's card component */
+    margin-right: -15px; /* Compensate for negative margin added by Bootstrap's card component */
+    }
+
+  
+    .ng-invalid.ng-touched {
+      border-color: red;
+    }
+
+    .error-block {
+      color:red;
+    }
+
+
+ 
