@@ -23,7 +23,6 @@ namespace Traveler_Compass.Repository.Implementation
             return itinerary;
         }
 
-        [HttpDelete]
         public async Task<Itinerary> DeleteItineraryAsync(int itineraryId)
         {
             var selectedItinerary = await dbContext.itineraries.FindAsync(itineraryId);

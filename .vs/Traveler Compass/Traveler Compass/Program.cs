@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 
 
 
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -23,9 +23,14 @@ builder.Services.AddDbContext<CompassDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CompassDbConnectionString"));
 });
 
-builder.Services.AddScoped<IUserRepository, UserRepository>(); //Injecting a Service inisde the program.cs file
-                                                               //If we want an implementation class coming from the UserRepository 
+//Injecting a Service inisde the program.cs file
+//If we want an implementation class coming from the Repository 
+builder.Services.AddScoped<IUserRepository, UserRepository>(); 
+builder.Services.AddScoped<IAgentRepository, AgentRepository>();
 builder.Services.AddScoped<IPackageRepository, PackageRepository>();
+
+//Adding the mapper 
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 
 var app = builder.Build();

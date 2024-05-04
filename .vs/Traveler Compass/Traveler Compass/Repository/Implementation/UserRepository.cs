@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Policy;
 using Traveler_Compass.Data;
 using Traveler_Compass.Models.Domain;
 using Traveler_Compass.Repository.Interfaces;
@@ -12,79 +15,158 @@ namespace Traveler_Compass.Repository.Implementation
     {
         //we will never deal with the DTOs inside the repositiories, thats for the controller
 
-        private readonly CompassDbContext dbContext; //
+        private readonly CompassDbContext _dbContext; //
         public UserRepository(CompassDbContext dbContext) //DI from compassDbContext class
         { 
-            this.dbContext = dbContext;
+            this._dbContext = dbContext;
         }
 
-    //To get a user from DB
-    public IEnumerable<User> GetAllUsers()
+     //To get a user from DB
+    public async Task<List<User>>GetAllUsersAsync()
     {
-        return dbContext.users.ToList();
+        return await _dbContext.users.ToListAsync();
     }
 
-    //To create a user
+     //To create a user   
     public async Task<User> CreateUserAsync(User user) //we will call this in the controller class 
         {
-            await dbContext.users.AddAsync(user); //User table beign populated 
-            await dbContext.SaveChangesAsync(); //EFCORE saving it to the db
+            await _dbContext.users.AddAsync(user); //User table beign populated 
+            await _dbContext.SaveChangesAsync(); //EFCORE saving it to the db
 
             return user;
         }
 
-        //To update current user
-      
-        public async Task<User> UpdateUserAsync(int userId, User user)
-        {
-            var updateUser = dbContext.users.FindAsync(userId);
-          if (updateUser != null)
-            {
-               // user.userId = user.userId;
-                user.firstName = user.firstName;
-                user.lastName = user.lastName;
-                user.email = user.email;
-                user.phoneNumber = user.phoneNumber;
-                user.password = user.password;
-                user.gender = user.gender;
 
-               await dbContext.users.AddAsync(user);
-                await dbContext.SaveChangesAsync();
+        //To update current user
+        public async Task<User> UpdateUserAsync(int userId, User updatedUser)
+        {
+          
+          var existingUser = await _dbContext.users.FindAsync(userId);
+
+            try
+            {
+                if (existingUser != null)
+                {
+                  
+                    existingUser.firstName = updatedUser.firstName;
+                    existingUser.lastName = updatedUser.lastName;
+                    existingUser.email = updatedUser.email;
+                    existingUser.phoneNumber = updatedUser.phoneNumber;
+                    existingUser.password = updatedUser.password;
+                    existingUser.gender = updatedUser.gender;
+
+                   
+                    await _dbContext.SaveChangesAsync();
+ 
+                }
+                else
+                {
+                    throw new Exception("user not found in Database");
+                }
+
+                return existingUser;
+
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
             }
 
-             return user;
+            
 
         }
 
-        [HttpDelete]
+        //To delete a user from the database with matching userId passed
         public async Task<User> DeleteUserAsync(int userId)
 
         { 
             
-            var selectedUser = await dbContext.users.FindAsync(userId);
-            if (selectedUser == null)
+            var selectedUser = await _dbContext.users.FindAsync(userId);
+            try
             {
-                return null;
+                if (selectedUser == null)
+                {
+                    throw new Exception($"Agent with ID {userId} not found.");
 
+                }
 
+                _dbContext.users.Remove(selectedUser);
+                await _dbContext.SaveChangesAsync();
             }
-
-            dbContext.users.Remove(selectedUser);
-            await dbContext.SaveChangesAsync();
-            return selectedUser;
-
-
-
-
+            catch(Exception ex)
+            {
+                Console.Write(ex.Message);
+                throw;
+            }
+   
            
+            return selectedUser;
+        
 
         }
 
 
+        //To fetch a user from the database with matching username passed
+        public async Task<User> GetUserAsync(string firstName, string lastName)
+        {
+            var selectedUser = await _dbContext.users.FirstOrDefaultAsync(x => x.firstName == firstName && x.lastName == lastName);
+            try
+            {
+                if (selectedUser == null)
+                {
+                    throw new Exception($"Uswer with ID {selectedUser} not found.");
 
-        //public Task<User> GetUserAsync(string username)
-        //{
-        //    throw new NotImplementedException();
-        //}
+                }
+  
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+                throw;
+            }
+
+           
+
+            return selectedUser;
+
+        }
+
+        //To Get a user from the database with matching userId passed
+        public async Task<User> GetUserByIdAsync(int userId)
+        {
+            var selectedUser = await _dbContext.users.FindAsync(userId);
+            try
+            {
+                if (selectedUser == null)
+                {
+                    throw new Exception($" user with ID {userId} not found.");
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+                throw;
+            }
+
+
+            return selectedUser;
+        }
+
+
+        /// <summary>
+        /// SaveChanges() method in Entity Framework Core is not inherently
+        /// asynchronous, so there's no need to await it. It operates synchronously 
+        /// and returns the number of state entries written to the database.
+        /// </summary>
+
+        public bool save()
+        {
+            var result =  _dbContext.SaveChanges();
+            return result > 0 ;
+        }
+
+      
     }
 }

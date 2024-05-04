@@ -5,7 +5,9 @@ namespace Traveler_Compass.Models.Domain
     public class Agent
     {
         [Key]
+        [Required]
         public int agentId { get; set; }
+
         [Required]
         [StringLength(50)]
         public string agentFristName { get; set; }

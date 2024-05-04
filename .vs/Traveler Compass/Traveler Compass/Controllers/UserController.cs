@@ -5,8 +5,10 @@ using Traveler_Compass.Data;
 using Traveler_Compass.Models.Domain;
 using Traveler_Compass.Repository.Interfaces;
 using System.Net.Http;
-using Traveler_Compass.Models.DTO;
 using Traveler_Compass.Repository.Implementation;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using AutoMapper;
+using Traveler_Compass.Models.DTO.UserDto;
 
 namespace Traveler_Compass.Controllers
 {
@@ -14,107 +16,195 @@ namespace Traveler_Compass.Controllers
     [Route("[controller]")]
 
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : Controller
     {
        //private readonly CompassDbContext dbContext; // we can use this feild inside the methods
-       // (CompassDbContext dbContext) // DI using the compassDbCintext class in the controller, so that we get an instance of the dbcontext class
+       //(CompassDbContext dbContext) //DI using the compassDbContext class in the controller, so that we get an instance of the dbcontext class
        //this.dbContext = dbContext;
 
 
 
-       private readonly IUserRepository userRepository;
-        public UserController(IUserRepository userRepository) { //Any connection to the data base should be through the repository not directly to the Data base
+        private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
+        public UserController(IUserRepository userRepository, IMapper mapper) { //Any connection to the data base should be through the repository not directly to the Data base
            
 
-            this.userRepository = userRepository;   
+            this._userRepository = userRepository;   
+            this._mapper = mapper;
         }
 
+       
         [HttpGet]
-
-        public ActionResult<IEnumerable<User>> GetUsers()
+        //Fetchs all users
+        public async Task<ActionResult<List<UserDTO>>>GetAllUsers()
         {
-            var users = userRepository.GetAllUsers();
-            return Ok(users);
+            var users = await _userRepository.GetAllUsersAsync();
+            //we want to select and return the DTO instead of the USER class
+            var userDTOs = users.Select(user => _mapper.Map<UserDTO>(user)).ToList();
+            return Ok(userDTOs);
         }
-    
 
-    [HttpPost]
+        [HttpGet("{userId}")]
+        //Fetchs user using a userId
+        public async Task<ActionResult<UserDTO>> GetUserByID(int userId)
+        {
+            var fetchedData = await _userRepository.GetUserByIdAsync(userId);
+
+            var mapData = _mapper.Map<UserDTO>(fetchedData);
+            try
+            {
+                if(fetchedData.userId != userId || fetchedData == null)
+                {
+                    return BadRequest("ID mismatch.");
+                }
+
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
+            return Ok(mapData);
+        }
+
+
+        [HttpGet("user")]
+
+        public async Task<IActionResult> GetUserByName(string firstName, string lastName)
+        { 
+            
+            try
+            {
+               
+                if(string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+                {
+                    return BadRequest("First Name and Last Name is Required");
+                }
+                //Retrieve the user by first and last name from the User Repo
+                var userName = await _userRepository.GetUserAsync(firstName, lastName);
+
+
+                if(userName != null)
+                {
+                    //Map the user Entity to the UserDTO
+                    var mapData = _mapper.Map<UserDTO>(userName);
+                    return Ok(mapData);
+                }
+                else
+                {
+                    return NotFound();
+                }
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(500);
+
+            }
+
+                
+        } 
+
+
+
+        [HttpPost]
         [Route("post")]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserDto userDto)
         {
-
-            //Map Dto to domain model
-            //So that the clients can't have access to certain field such as userId
-            var user = new User //this the user class
+            try
             {
-                userId = userDto.userId,
-                firstName = userDto.firstName,
-                lastName = userDto.lastName,
-                email = userDto.email,
-                password = userDto.password,
-                phoneNumber = userDto.phoneNumber,
-                gender = userDto.gender
+                //Converts the clients data from DTO to our representation of User
+                var client = _mapper.Map<User>(userDto);
 
+                var repo = await _userRepository.CreateUserAsync(client);
 
-            };
+                var respone = _mapper.Map<UserDTO>(repo);
 
-            await userRepository.CreateUserAsync(user); //take in the user and pass it to the UserRepo
-
-
-            //Map back from model to Dto
-            var response = new UserDTO
+                return Ok(respone);
+            }
+            catch (Exception ex)
             {
-               // userId = user.userId,
-                firstName = user.firstName,
-                lastName = user.lastName,
-                email = user.email,
-                password = user.password,
-                phoneNumber = user.phoneNumber,
-                gender = user.gender
+              
+                return StatusCode(500, $"There was an error found{ex.Message}");
 
-            };
-            return Ok(response); // not to use "user" directly its bad practice 
+            }
+          
         }
 
 
-        //[HttpPut("{string}")]
-        //public async Task<IActionResult> UpdateUser(string userid, [FromBody] User user)
-        //{
-        //    if(userid != user.userId)
-        //    {
-        //        return BadRequest("ID mismatch between URL and user data.");
+        //this method will take a userId passed by the user to fetch the data from the repository 
+        //The repository class will then update the user
+        [HttpPut]
+        [Route("{userId}")] 
+        public async Task<IActionResult> UpdateUser(int userId, [FromBody] UserDTO userDto){
+           var fetchedData = await _userRepository.GetUserByIdAsync(userId);
+            
+            try
+            {
+                if (fetchedData.userId != userId)
+                {
+                    return BadRequest("ID mismatch between URL and user data.");
 
-        //    }
-        //    try
-        //    {
-        //        userRepository.UpdateUserAsync(userid, user);
-        //        return Ok();
-        //    }
-        //    catch(Exception ex) 
-        //    {
+                }
+                if(fetchedData == null)
+                {
+                    return NotFound();
+                }
 
-        //        return StatusCode(500, "Internal server error");
+                // Map the updated user DTO to a user entity
+                var clentRequest = _mapper.Map<User>(userDto);
 
-        //    }
+                // Update the user in the repository
+                await _userRepository.UpdateUserAsync(userId, clentRequest);
 
-        //}
+                // Map the updated user entity back to a DTO
+                var response = _mapper.Map<UserDTO>(clentRequest);
+              
+                return Ok(response);
 
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+               return StatusCode(500);
+            }
+        
+        }
+
+        //This Method is used to Fetch user Id from User Repository and delete it from the database
         [HttpDelete]
-       // [Route("{string}")]
+        [Route("{userId}")]
         public async Task<IActionResult> DeleteUser(int userId)
 
-        {
-            var seletctedUser = await userRepository.DeleteUserAsync(userId);
+        { 
+            
+            //no need to map the deleted user to a DTO since the user
+            //is no longer available after deletion
+            try
+            {   //Fetchs the same userId
+               var selectedUser = await _userRepository.GetUserByIdAsync(userId);
+                if (selectedUser.userId == userId)
+                {   //Deletes user from User Repo
+                    await _userRepository.DeleteUserAsync(userId);
+                }
+ 
+                
+                return Ok(); 
 
-            if(seletctedUser != null)
+            }catch (Exception ex)
             {
-                return NotFound();
+                Console.WriteLine(ex.Message);
+                return StatusCode(500);
             }
 
-            return Ok();    
+            
 
 
         }
+
+       
 
 
     }

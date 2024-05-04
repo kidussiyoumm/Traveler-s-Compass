@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Traveler_Compass.Models.Domain;
-using Traveler_Compass.Models.DTO;
+using Traveler_Compass.Models.DTO.PacakgeDto;
 using Traveler_Compass.Repository.Implementation;
 using Traveler_Compass.Repository.Interfaces;
 

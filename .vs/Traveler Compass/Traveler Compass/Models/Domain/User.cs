@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+//using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Traveler_Compass.Models.Domain
 {
     public class User
     {
+        [Required]
         [Key]
         public int userId { get; set; }
 
@@ -22,7 +23,7 @@ namespace Traveler_Compass.Models.Domain
         public long phoneNumber { get; set; }
 
         [Required]
-        [StringLength(1)]
+       
         public char gender { get; set; }
                    
         public List<Package> packages { get; set; } //one to many relationship
