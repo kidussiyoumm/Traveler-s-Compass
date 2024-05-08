@@ -6,7 +6,7 @@ namespace Traveler_Compass.Repository.Interfaces
     public interface IUserRepository
     {
         Task<User> CreateUserAsync(User user);//This takes in user insert it in the database and return the created user
-        Task<User> GetUserAsync(string userFristName, string userLastName);
+        Task<User> GetUserByNameAsync(string userFristName, string userLastName);
         Task<List<User>> GetAllUsersAsync();
         Task<User> UpdateUserAsync(int userId, User user);
         Task<User> DeleteUserAsync(int userId);

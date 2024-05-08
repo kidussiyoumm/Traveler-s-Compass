@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 //using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Traveler_Compass.Models.Domain
@@ -25,8 +26,9 @@ namespace Traveler_Compass.Models.Domain
         [Required]
        
         public char gender { get; set; }
-                   
+        [InverseProperty("Package")]
         public List<Package> packages { get; set; } //one to many relationship
+        [InverseProperty("Itinerary")]
         public List<Itinerary> itineraries { get; set; } //one to many relationship
 
 

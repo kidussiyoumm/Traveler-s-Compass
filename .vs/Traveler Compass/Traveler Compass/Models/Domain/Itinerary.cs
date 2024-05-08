@@ -15,16 +15,18 @@ namespace Traveler_Compass.Models.Domain
         public string description { get; set; }
         public int price { get; set; }
 
-        // public List<Package> packages { get; set; } //one to many relationship
 
         [ForeignKey("User")]
         public int userId { get; set; } //foreign key for user class 
         public User User { get; set; } // Navigation property for User
 
+        // Navigation property
+        public Package Package { get; set; }
 
-        //public Itinerary()
-        //{
-        //    packages = new List<Package>();
-        //}
+        [ForeignKey("Package")]
+        public int PackageId { get; set; }
+
+
+
     }
 }

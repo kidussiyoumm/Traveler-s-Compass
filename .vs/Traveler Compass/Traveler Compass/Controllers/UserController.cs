@@ -38,10 +38,20 @@ namespace Traveler_Compass.Controllers
         //Fetchs all users
         public async Task<ActionResult<List<UserDTO>>>GetAllUsers()
         {
-            var users = await _userRepository.GetAllUsersAsync();
-            //we want to select and return the DTO instead of the USER class
-            var userDTOs = users.Select(user => _mapper.Map<UserDTO>(user)).ToList();
-            return Ok(userDTOs);
+            try
+            {
+                var users = await _userRepository.GetAllUsersAsync();
+                //we want to select and return the DTO instead of the USER class back to client 
+                var userDTO = users.Select(user => _mapper.Map<UserDTO>(user)).ToList();
+
+                return Ok(userDTO);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(500);
+            }
+           
         }
 
         [HttpGet("{userId}")]
@@ -81,7 +91,7 @@ namespace Traveler_Compass.Controllers
                     return BadRequest("First Name and Last Name is Required");
                 }
                 //Retrieve the user by first and last name from the User Repo
-                var userName = await _userRepository.GetUserAsync(firstName, lastName);
+                var userName = await _userRepository.GetUserByNameAsync(firstName, lastName);
 
 
                 if(userName != null)

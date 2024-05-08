@@ -10,12 +10,12 @@ using Traveler_Compass.Models.Domain;
 using Traveler_Compass.Repository.Interfaces;
 
 namespace Traveler_Compass.Repository.Implementation
-{
+{          
     public class UserRepository : IUserRepository
     {
         //we will never deal with the DTOs inside the repositiories, thats for the controller
 
-        private readonly CompassDbContext _dbContext; //
+        private readonly CompassDbContext _dbContext; 
         public UserRepository(CompassDbContext dbContext) //DI from compassDbContext class
         { 
             this._dbContext = dbContext;
@@ -107,7 +107,7 @@ namespace Traveler_Compass.Repository.Implementation
 
 
         //To fetch a user from the database with matching username passed
-        public async Task<User> GetUserAsync(string firstName, string lastName)
+        public async Task<User> GetUserByNameAsync(string firstName, string lastName)
         {
             var selectedUser = await _dbContext.users.FirstOrDefaultAsync(x => x.firstName == firstName && x.lastName == lastName);
             try

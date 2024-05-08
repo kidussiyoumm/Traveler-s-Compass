@@ -24,16 +24,68 @@ namespace Traveler_Compass.Controllers
             this._mapper = _mapper;
 
         }
+
+        /// <summary>
+        /// fetches all agents from the repository,
+        /// maps each agent to a DTO object, and returns the DTO objects as the response.
+        /// </summary>
+
         [HttpGet]
         [Route("Get")]
         public async Task<ActionResult<List<AgentDTO>>> GetAllAgents()
         {
-            var agents = await _agentRepository.GetAllAgents();
-
-            var agentDTO = agents.Select( agents=> _mapper.Map<AgentDTO>(agents)).ToList();
+            try
+            {
+                var agents = await _agentRepository.GetAllAgentsAsync();
+                // select and return the DTO instead of the agent class back to client
+                var agentDTO = agents.Select(agents => _mapper.Map<AgentDTO>(agents)).ToList();
             return Ok(agentDTO);
+            }
+            catch(Exception ex)
+            {
+            Console.WriteLine(ex.Message);
+            return StatusCode(500);
+            }
+            
         }
 
+        [HttpGet]
+        [Route("agentName")]
+        public async Task<IActionResult> GetAgentFullName(string agentFirstNAme, string AgetLastName)
+        {
+            try
+            {
+                var agentName = await _agentRepository.GetAgentByNameAsync(agentFirstNAme, AgetLastName); 
+                
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("agentId")]
+        public async Task<ActionResult<AgentDTO>> GetAgentById(int agentId)
+        {
+            var fetchId = await _agentRepository.GetAgentIdAsync(agentId);
+            try
+            {
+                if(fetchId == null || fetchId.agentId != agentId)
+                {
+                    return BadRequest($"There is an error please try again");
+                }
+
+                var response = _mapper.Map<AgentDTO>(fetchId);
+                return Ok(response);    
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
+        }
 
         [HttpPost]
         [Route("post")]
@@ -43,11 +95,11 @@ namespace Traveler_Compass.Controllers
             try
             {
                 //Converts the clients data from DTO to our representation of Agent
-                var agent = _mapper.Map<Agent>(AgentDto);
+                var ClinetData = _mapper.Map<Agent>(AgentDto);
 
                 //the DTO frormat mapped to our Agent is not storing into our Database
                 //But also this returns the user object that was created and saved
-                var createAgent = await _agentRepository.CreateAgentAsync(agent);
+                var createAgent = await _agentRepository.CreateAgentAsync(ClinetData);
 
                 //we've saved the user in the database, the client expects the response to be in the form of a DTO
                 //mapper again to convert the created agent object (in domain model format) into a DTO format that the client

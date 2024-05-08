@@ -23,8 +23,13 @@ namespace Traveler_Compass.Models.Domain
         public int agentId { get; set; }
         public Agent agent { get; set; }
 
-        //public int itineraryId { get; set; }
-        //public Itinerary itinerary { get; set; }
+        [InverseProperty("Package")]
+        public ICollection<Itinerary> Itineraries { get; set; }
+
+      public Package()
+        {
+            Itineraries = new List<Itinerary>();
+        }
 
 
     }

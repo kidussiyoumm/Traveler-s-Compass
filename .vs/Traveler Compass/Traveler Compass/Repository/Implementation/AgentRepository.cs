@@ -1,7 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using Traveler_Compass.Data;
 using Traveler_Compass.Models.Domain;
+using Traveler_Compass.Models.DTO.Agent;
 using Traveler_Compass.Repository.Interfaces;
 
 namespace Traveler_Compass.Repository.Implementation
@@ -9,22 +12,47 @@ namespace Traveler_Compass.Repository.Implementation
     public class AgentRepository : IAgentRepository
     {
         private readonly CompassDbContext _dbContext;
+        
         public AgentRepository(CompassDbContext dbContext){ 
             this._dbContext = dbContext;
         }
         //To get Agent from Database returns a list of Agnets
-        public async Task<List<Agent>> GetAllAgents()
+        public async Task<List<Agent>> GetAllAgentsAsync()
         {
             return await _dbContext.agents.ToListAsync();
         }
         //To create an Agent 
         public async Task<Agent> CreateAgentAsync(Agent agent)
         {
+            if(agent == null) {
+                throw new Exception("Please Try Again");
+            }
             await _dbContext.agents.AddAsync(agent); //Agent table beign populated 
             await _dbContext.SaveChangesAsync(); //EFCORE saving it to the db
 
             return agent;
         }
+
+        public async Task<Agent> GetAgentByNameAsync(string firstName, string lastName)
+        {
+            var selectedUser = await _dbContext.agents.FirstOrDefaultAsync(x => x.agentFristName == firstName && x.agentLastName == lastName);
+
+            try
+            {
+
+                if(selectedUser == null)
+                {
+                    throw new Exception($"Invalid Entry of {selectedUser}");
+                }
+               
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return selectedUser;
+        }
+
         //To delete a agent from the database with matching agentId passed
         public async Task<Agent> DeleteAgentAsync(int agentId)
         {
@@ -94,8 +122,9 @@ namespace Traveler_Compass.Repository.Implementation
                 Console.WriteLine(ex.Message);
                 throw;
             }
-
             return selectedId;
         }
+
+       
     }
 }

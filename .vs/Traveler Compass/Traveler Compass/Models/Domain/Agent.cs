@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Traveler_Compass.Models.Domain
 {
@@ -23,7 +24,9 @@ namespace Traveler_Compass.Models.Domain
         public string email { get; set; }
         public long phoneNumber { get; set; }
 
+        [InverseProperty("Packages")]
         public List<Package> packages { get; set; }
+        [InverseProperty("Itinerary")]
         public List<Itinerary> itineraries { get; set; }
 
 

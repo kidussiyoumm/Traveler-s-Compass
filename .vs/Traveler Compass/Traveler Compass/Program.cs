@@ -28,6 +28,7 @@ builder.Services.AddDbContext<CompassDbContext>(options =>
 builder.Services.AddScoped<IUserRepository, UserRepository>(); 
 builder.Services.AddScoped<IAgentRepository, AgentRepository>();
 builder.Services.AddScoped<IPackageRepository, PackageRepository>();
+builder.Services.AddScoped<IItineraryRepository, ItineraryRepository>();
 
 //Adding the mapper 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
