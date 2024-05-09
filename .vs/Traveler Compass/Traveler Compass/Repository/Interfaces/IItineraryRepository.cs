@@ -9,7 +9,7 @@ namespace Traveler_Compass.Repository.Interfaces
         Task<Itinerary> CreateItineraryAsync(Itinerary itinerary);
         Task<List<Itinerary>>GetAllItineraryAsync();
         Task<Itinerary> GetItineraryById(int itineraryId);
-        Task<Itinerary> GetItineraryByName(string name);
+        Task<Itinerary> GetItineraryByName(string itineraryName);
         Task<Itinerary> UpdateItineraryAsync(int itineraryid, Itinerary itinerary);
         Task<Itinerary> DeleteItineraryAsync(int itineraryid);
     }

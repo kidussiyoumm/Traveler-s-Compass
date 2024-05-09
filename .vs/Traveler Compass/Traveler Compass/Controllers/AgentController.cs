@@ -31,7 +31,7 @@ namespace Traveler_Compass.Controllers
         /// </summary>
 
         [HttpGet]
-        [Route("Get")]
+        [Route("api/Agent/GetAllAgents")]
         public async Task<ActionResult<List<AgentDTO>>> GetAllAgents()
         {
             try
@@ -50,23 +50,30 @@ namespace Traveler_Compass.Controllers
         }
 
         [HttpGet]
-        [Route("agentName")]
-        public async Task<IActionResult> GetAgentFullName(string agentFirstNAme, string AgetLastName)
+        [Route("api/Agent/{agentFristName}/{agentetLastName}/GetAgentFullName")]
+        public async Task<IActionResult> GetAgentFullName(string agentFirstName, string agentLastName)
         {
             try
             {
-                var agentName = await _agentRepository.GetAgentByNameAsync(agentFirstNAme, AgetLastName); 
-                
-            }catch(Exception ex)
+                if(string.IsNullOrEmpty(agentFirstName)|| string.IsNullOrEmpty(agentLastName))
+                {
+                    return BadRequest($"please try usnig the correct{agentFirstName} & {agentLastName} again");
+                }
+
+                var agentName = await _agentRepository.GetAgentByNameAsync(agentFirstName, agentLastName);
+                return Ok(agentName);
+            }
+            catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                throw;
             }
 
-            return Ok();
+            
         }
 
         [HttpGet]
-        [Route("agentId")]
+        [Route("api/Agent/{agentId}GetAgentById")]
         public async Task<ActionResult<AgentDTO>> GetAgentById(int agentId)
         {
             var fetchId = await _agentRepository.GetAgentIdAsync(agentId);
@@ -88,8 +95,8 @@ namespace Traveler_Compass.Controllers
         }
 
         [HttpPost]
-        [Route("post")]
-        public async Task<IActionResult>CreateAgent([FromBody] CreateAgentDTO AgentDto)
+        [Route("api/Agent/CreateAgentAsync")]
+        public async Task<IActionResult>CreateAgentAsync([FromBody] CreateAgentDTO AgentDto)
        
         {
             try
@@ -118,19 +125,17 @@ namespace Traveler_Compass.Controllers
 
         //This Method is used to Fetch agent Id from Agent Repository and delete it from the database
         [HttpDelete]
-        [Route("{agentId}")]
+        [Route("api/Agent/{agentId}/DeleteAgent")]
         public async Task<IActionResult>DeleteAgent(int agentId)
         {
             //no need to map the deleted user to a DTO since the user
             //is no longer available after deletion
             try
-            {
-                if(agentId == 0)
+            {var deleteAgentId = await _agentRepository.GetAgentIdAsync(agentId);
+                if(deleteAgentId == null)
                 {
-                    throw new Exception("Agent Doesn't Exist");
+                    throw new Exception($"Error incoorect Entry AgentId {deleteAgentId} Doesn't Exist");
                 }
-
-                var deleteAgentId = await _agentRepository.GetAgentIdAsync(agentId);
 
                 if(agentId == deleteAgentId.agentId)
                 {
@@ -148,7 +153,7 @@ namespace Traveler_Compass.Controllers
 
 
         [HttpPut]
-        [Route("{agentId}")]
+        [Route("api/Agent/{agentId}/UpdateAgentUsingId")]
 
         public async Task<IActionResult>UpdateAgentUsingId(int agentId, [FromBody] AgentDTO agentDTO)
         {
@@ -161,7 +166,7 @@ namespace Traveler_Compass.Controllers
                 }
                 if(fetchedId == null)
                 {
-                    return NotFound();
+                    return NotFound($"{fetchedId} is Null");
 
                 }
 

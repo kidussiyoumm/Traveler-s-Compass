@@ -53,9 +53,23 @@ namespace Traveler_Compass.Repository.Implementation
         }
 
 
-        public Task<Itinerary> GetItineraryByName(string name)
+        public async Task<Itinerary> GetItineraryByName(string itineraryName)
         {
-            throw new NotImplementedException();
+            var itinerary = await _dbContext.itineraries.FirstOrDefaultAsync(x => x.title == itineraryName);
+            try
+            {
+                if(itinerary == null)
+                {
+                    throw new Exception($"Uswer with ID {itinerary} not found.");
+                }
+
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
+            return itinerary;
         }
         public async Task<Itinerary> CreateItineraryAsync(Itinerary itinerary)
         {

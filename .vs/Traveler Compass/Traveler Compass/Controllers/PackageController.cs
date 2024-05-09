@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Azure;
+using Microsoft.AspNetCore.Mvc;
 using Traveler_Compass.Models.Domain;
 using Traveler_Compass.Models.DTO.PacakgeDto;
 using Traveler_Compass.Repository.Implementation;
@@ -11,50 +13,132 @@ namespace Traveler_Compass.Controllers
     [ApiController]
     public class PackageController : ControllerBase
     {
-        private readonly IPackageRepository packageRepository;
-        public PackageController(IPackageRepository packageRepository)
+        private readonly IPackageRepository _packageRepository;
+        private readonly IMapper _mapper;
+        public PackageController(IPackageRepository _packageRepository,
+                                  IMapper _mapper)
         { //Any connection to the data base should be through the repository not directly to the Data base
 
 
-            this.packageRepository = packageRepository;
+            this._packageRepository = _packageRepository;
+            this._mapper = _mapper; 
+
         }
         [HttpGet]
-
-        public ActionResult<IEnumerable<Package>> GetPackage()
+        [Route("api/package/GetAllPackageAsync")]
+        public async Task<ActionResult<List<Package>>> GetAllPackageAsync()
         {
-            var package = packageRepository.GetAllPackage();
+            var package = await _packageRepository.GetAllPackage();
             return Ok(package);
+        }
+        [HttpGet]
+        [Route("api/package/{packageId}/GetPackageByIdAsync")]
+        public async Task<ActionResult> GetPackageByIdAsync(int packageId)
+        {
+            
+            try
+            {
+                var fetchId = await _packageRepository.GetPackageAsyncById(packageId);
+                if(fetchId == null)
+                {
+                    throw new Exception("{fetchId} not Found");
+                }
+                return Ok(fetchId); 
+
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+        [HttpGet]
+        [Route("api/package/{packageTitle}/GetPackageByTitleAsync")]
+        public async Task<IActionResult> GetPackageByTitleAsync(string packageTitle)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(packageTitle))
+                {
+                    return NotFound();
+                }
+
+               var response = await _packageRepository.GetPackageByNameAsync(packageTitle);
+               return Ok(response);
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
 
         [HttpPost]
-        [Route("post")]
-        public async Task<IActionResult> CreatePackage([FromBody] CreatePackageDTO packageDto)
+        [Route("api/package/CreatePackageAsync")]
+        public async Task<ActionResult<PackageDTO>> CreatePackageAsync([FromBody] CreatePackageDTO packageDto)
         {
-
-            //Map Dto to domain model
-            //So that the clients can't have access to certain field such as PacakageId
-            var package = new Package //this the Pacakge class
+            try
             {
+                var ClientData =  _mapper.Map<Package>(packageDto);
+                var databaseCheck = await _packageRepository.CreatePackageAsync(ClientData);
+                var response = _mapper.Map<PackageDTO>(databaseCheck);
+               
+                return Ok(response);
+            }catch(Exception ex) {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+                     
+        }
 
-              //  packageId = packageDto.packageId,
-                title = packageDto.title,
-                description = packageDto.description,
-                price = packageDto.price
+        [HttpPut]
+        [Route("api/package/UpdatePackageAsync")]
+        public async Task<ActionResult<PackageDTO>> UpdatePackageAsync(int packageId, [FromBody] CreatePackageDTO packageDTO)
+        { 
+            
+            var fetchData = await _packageRepository.GetPackageAsyncById(packageId);
 
-             };
+            try
+                {
+                 if(fetchData.packageId != packageId)
+                {
+                    return NotFound($"{packageId} can not be found");
+                }
+                 if(fetchData == null)
+                {
+                    return NotFound($"{packageId} can not be found");
+                }
 
-            await packageRepository.CreatePackageAsync(package); //take in the user and pass it to the UserRepo
-
-            //Map back from model to Dto
-            var response = new PackageDTO
+                    var clientData = _mapper.Map<Package>(packageDTO);
+                    var updateDataBase = await _packageRepository.UpdatePackageAsync(packageId, clientData);
+                    var response = _mapper.Map<PackageDTO>(updateDataBase);
+                     return Ok(response);
+                
+                
+            }catch(Exception ex)
             {
-             //   packageId = packageDto.packageId,
-                title = packageDto.title,
-                description = packageDto.description,
-                price = packageDto.price
+                Console.WriteLine(ex.Message);
+                throw;
+            }
 
-            };
-            return Ok(response); // not to use "user" directly its bad practice 
+        }
+
+        [HttpDelete]
+        [Route("api/package/{packageId}/DeletepackageByIdAsync")]
+        public async Task<IActionResult> DeletepackageByIdAsync(int packageId)
+        {
+            var fetchId = await _packageRepository.GetPackageAsyncById(packageId);
+            try
+            {
+                if(fetchId.packageId != packageId)
+                {
+                    return BadRequest();
+                }
+                var deletePacakge = _packageRepository.DeletePackageAsync(fetchId.packageId);
+                return Ok(deletePacakge);
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
 
     }

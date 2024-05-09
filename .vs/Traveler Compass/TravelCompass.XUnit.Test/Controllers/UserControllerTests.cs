@@ -7,6 +7,7 @@ using Traveler_Compass.Repository.Implementation;
 using Traveler_Compass.Repository.Interfaces;
 using FakeItEasy;
 using Traveler_Compass.Models.DTO.UserDto;
+using Xunit;
 
 namespace TravelCompass.XUnit.Test.Controllers
 {

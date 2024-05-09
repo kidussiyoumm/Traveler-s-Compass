@@ -24,9 +24,8 @@ namespace Traveler_Compass.Models.Domain
         public string email { get; set; }
         public long phoneNumber { get; set; }
 
-        [InverseProperty("Packages")]
-        public List<Package> packages { get; set; }
-        [InverseProperty("Itinerary")]
+        
+        public List<Package> packages { get; set; } 
         public List<Itinerary> itineraries { get; set; }
 
 

@@ -27,8 +27,4 @@
     <ProjectReference Include="..\Traveler Compass\Traveler Compass.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NewFolder\" />
-  </ItemGroup>
-
 </Project>

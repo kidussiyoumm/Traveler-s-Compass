@@ -58,7 +58,7 @@ namespace Traveler_Compass.Migrations
 
                     b.HasKey("agentId");
 
-                    b.ToTable("agents");
+                    b.ToTable("agents", (string)null);
                 });
 
             modelBuilder.Entity("Traveler_Compass.Models.Domain.Itinerary", b =>
@@ -94,7 +94,7 @@ namespace Traveler_Compass.Migrations
 
                     b.HasIndex("userId");
 
-                    b.ToTable("itineraries");
+                    b.ToTable("itineraries", (string)null);
                 });
 
             modelBuilder.Entity("Traveler_Compass.Models.Domain.Package", b =>
@@ -130,7 +130,7 @@ namespace Traveler_Compass.Migrations
 
                     b.HasIndex("userId");
 
-                    b.ToTable("packages");
+                    b.ToTable("packages", (string)null);
                 });
 
             modelBuilder.Entity("Traveler_Compass.Models.Domain.User", b =>
@@ -169,7 +169,7 @@ namespace Traveler_Compass.Migrations
 
                     b.HasKey("userId");
 
-                    b.ToTable("users");
+                    b.ToTable("users", (string)null);
                 });
 
             modelBuilder.Entity("Traveler_Compass.Models.Domain.Itinerary", b =>

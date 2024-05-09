@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using AutoMapper.Configuration.Annotations;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -81,9 +82,10 @@ namespace Traveler_Compass.Repository.Implementation
 
         public async Task<Agent> UpdateAgentAsync(int agentId, Agent updatedAgent)
         {
+            var exsitiingAgent = await _dbContext.agents.FindAsync(agentId);
             try
             {
-                var exsitiingAgent = await _dbContext.agents.FindAsync(agentId);
+                
 
                 if(exsitiingAgent != null)
                 {
@@ -93,17 +95,20 @@ namespace Traveler_Compass.Repository.Implementation
                     exsitiingAgent.email = updatedAgent.email;
                     exsitiingAgent.companyName = updatedAgent.companyName;
                     exsitiingAgent.description = updatedAgent.description;
+
+                    await _dbContext.SaveChangesAsync();
                 }
                 else
                 {
                     throw new Exception("User not found");
                 }
-                return updatedAgent;
+                
             }catch(Exception ex)
             {
                 throw new Exception($"User doesn't exist, {ex.Message}");
             }
 
+            return exsitiingAgent;
         }
 
         //Get Agent by passing an Id to fetch from the database

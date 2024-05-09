@@ -35,8 +35,9 @@ namespace Traveler_Compass.Controllers
 
        
         [HttpGet]
+        [Route("api/Users/GetAllUserAsync")]
         //Fetchs all users
-        public async Task<ActionResult<List<UserDTO>>>GetAllUsers()
+        public async Task<ActionResult<List<UserDTO>>> GetAllUsersAsync()
         {
             try
             {
@@ -54,9 +55,9 @@ namespace Traveler_Compass.Controllers
            
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet("api/Users/{userId}/GetByIdAsync")]
         //Fetchs user using a userId
-        public async Task<ActionResult<UserDTO>> GetUserByID(int userId)
+        public async Task<ActionResult<UserDTO>> GetUserByIdAsync(int userId)
         {
             var fetchedData = await _userRepository.GetUserByIdAsync(userId);
 
@@ -78,9 +79,10 @@ namespace Traveler_Compass.Controllers
         }
 
 
-        [HttpGet("user")]
+        [HttpGet]
+        [Route("api/Users/{firstName}/{lastName}/GetUserByNameAsync")]
 
-        public async Task<IActionResult> GetUserByName(string firstName, string lastName)
+        public async Task<IActionResult> GetUserByNameAsync(string firstName, string lastName)
         { 
             
             try
@@ -102,7 +104,7 @@ namespace Traveler_Compass.Controllers
                 }
                 else
                 {
-                    return NotFound();
+                    return NotFound($"{userName} not Found");
                 }
 
             }
@@ -119,8 +121,8 @@ namespace Traveler_Compass.Controllers
 
 
         [HttpPost]
-        [Route("post")]
-        public async Task<IActionResult> CreateUser([FromBody] CreateUserDto userDto)
+        [Route("api/Users/CreateUserAsync")]
+        public async Task<IActionResult> CreateUserAsync([FromBody] CreateUserDto userDto)
         {
             try
             {
@@ -146,18 +148,18 @@ namespace Traveler_Compass.Controllers
         //this method will take a userId passed by the user to fetch the data from the repository 
         //The repository class will then update the user
         [HttpPut]
-        [Route("{userId}")] 
-        public async Task<IActionResult> UpdateUser(int userId, [FromBody] UserDTO userDto){
-           var fetchedData = await _userRepository.GetUserByIdAsync(userId);
+        [Route("api/Users/{userId}/updateUserAsync")] 
+        public async Task<IActionResult> UpdateUserAsync(int userId, [FromBody] UserDTO userDto){
+           var fetchedId = await _userRepository.GetUserByIdAsync(userId);
             
             try
             {
-                if (fetchedData.userId != userId)
+                if (fetchedId.userId != userId)
                 {
                     return BadRequest("ID mismatch between URL and user data.");
 
                 }
-                if(fetchedData == null)
+                if(fetchedId == null)
                 {
                     return NotFound();
                 }
@@ -185,8 +187,8 @@ namespace Traveler_Compass.Controllers
 
         //This Method is used to Fetch user Id from User Repository and delete it from the database
         [HttpDelete]
-        [Route("{userId}")]
-        public async Task<IActionResult> DeleteUser(int userId)
+        [Route("api/Users/{userId}/DeleteUserAsync")]
+        public async Task<IActionResult> DeleteUserAsync(int userId)
 
         { 
             

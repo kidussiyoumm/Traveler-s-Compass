@@ -6,6 +6,7 @@ namespace Traveler_Compass.Models.Domain
     public class Package
     {
         [Key]
+        [Required]
         public int packageId { get; set; }
         [Required]
         [StringLength(50)]
@@ -15,15 +16,15 @@ namespace Traveler_Compass.Models.Domain
         public string description { get; set; }
         public int price { get; set; }
 
-        [ForeignKey("User")]
+        [ForeignKey("UserId")]
         public int userId { get; set; } //foreign key for user class 
         public User user { get; set; } // Navigation property for User
 
-        [ForeignKey("Agent")]
+        [ForeignKey("AgentId")]
         public int agentId { get; set; }
         public Agent agent { get; set; }
 
-        [InverseProperty("Package")]
+       
         public ICollection<Itinerary> Itineraries { get; set; }
 
       public Package()
