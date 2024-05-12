@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IPackage } from '../IPackages.interface';
+import { IPackage } from '../Interfaces/IPackages.interface';
 
 @Component({
   selector: 'app-packages',

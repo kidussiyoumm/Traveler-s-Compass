@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { OfferCollectionService } from './services/offer-collection.service';
-import { IPackage } from '../IPackages.interface';
+import { IPackage } from '../Interfaces/IPackages.interface';
 
 @Component({
   selector: 'app-package-list',

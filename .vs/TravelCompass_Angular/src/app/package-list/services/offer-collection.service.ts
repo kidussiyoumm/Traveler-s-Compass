@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';//allows passing some data to a function and returns a new data 
-import { IPackage } from 'src/app/IPackages.interface';
+import { IPackage } from 'src/app/Interfaces/IPackages.interface';
 import { Observable } from 'rxjs';
 
 //this ts class is used to create sa service for other class/commponets to share all the packages objects
