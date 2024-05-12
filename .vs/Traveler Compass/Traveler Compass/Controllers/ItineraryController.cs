@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Linq.Expressions;
 using Traveler_Compass.Models.Domain;
 using Traveler_Compass.Models.DTO.ItineraryDto;
@@ -92,6 +94,7 @@ namespace Traveler_Compass.Controllers
 
         [HttpDelete]
         [Route("api/Itinerary/{itineraryId}/DeleteItinerary")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Itinerary>> DeleteItineraryAsync(int itineraryId)
         {
             var fetchId = await _itineraryrepository.GetItineraryById(itineraryId);
@@ -114,6 +117,7 @@ namespace Traveler_Compass.Controllers
 
         [HttpPost]
         [Route("api/Itinerary/{itineraryId}/UpdateItineraries")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateItineraryAsync(int itineraryId, [FromBody] ItineraryDTO itineraryDTO)
         {
             var fetchId = await _itineraryrepository.GetItineraryById(itineraryId);
@@ -148,6 +152,7 @@ namespace Traveler_Compass.Controllers
 
         [HttpPut]
         [Route("api/Itinerary/{itineraryId}/UpdateItineraryById")]
+        [Authorize(Roles = "Admin")]
         public async Task <ActionResult<ItineraryDTO>> UpdateItineraryByIdAsync(int itineraryId, [FromBody] ItineraryDTO itineraryDto)
         {
             try { 

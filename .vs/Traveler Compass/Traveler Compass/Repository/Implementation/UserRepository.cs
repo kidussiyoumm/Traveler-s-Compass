@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Policy;
+using System.Text.RegularExpressions;
 using Traveler_Compass.Data;
 using Traveler_Compass.Models.Domain;
 using Traveler_Compass.Repository.Interfaces;
@@ -14,6 +15,11 @@ namespace Traveler_Compass.Repository.Implementation
     public class UserRepository : IUserRepository
     {
         //we will never deal with the DTOs inside the repositiories, thats for the controller
+        /// <summary>
+        /// SaveChanges() method in Entity Framework Core is not inherently
+        /// asynchronous, so there's no need to await it. It operates synchronously 
+        /// and returns the number of state entries written to the database.
+        /// </summary>
 
         private readonly CompassDbContext _dbContext; 
         public UserRepository(CompassDbContext dbContext) //DI from compassDbContext class
@@ -36,6 +42,9 @@ namespace Traveler_Compass.Repository.Implementation
             return user;
         }
 
+        
+
+      
 
         //To update current user
         public async Task<User> UpdateUserAsync(int userId, User updatedUser)
@@ -155,17 +164,34 @@ namespace Traveler_Compass.Repository.Implementation
         }
 
 
-        /// <summary>
-        /// SaveChanges() method in Entity Framework Core is not inherently
-        /// asynchronous, so there's no need to await it. It operates synchronously 
-        /// and returns the number of state entries written to the database.
-        /// </summary>
+       public async Task<User> GetUserByEmailAsync(string email)
+        {
+
+            try
+            {
+                var fetchEmail = await _dbContext.users.FirstOrDefaultAsync(x => x.email == email);
+
+                if(fetchEmail == null) { 
+               
+                    throw new Exception($"{fetchEmail} was a null entry");
+                }
+
+                return fetchEmail;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception($"No user found with email '{email}'"); ;
+            }
+        }
 
         public bool save()
         {
             var result =  _dbContext.SaveChanges();
             return result > 0 ;
         }
+
+
 
       
     }

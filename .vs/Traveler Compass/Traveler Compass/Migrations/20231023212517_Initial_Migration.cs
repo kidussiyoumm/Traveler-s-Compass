@@ -18,8 +18,8 @@ namespace Traveler_Compass.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     agentFristName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     agentLastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    companyName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    companyName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     phoneNumber = table.Column<long>(type: "bigint", nullable: false)
                 },

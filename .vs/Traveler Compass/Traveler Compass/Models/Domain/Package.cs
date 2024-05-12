@@ -6,7 +6,7 @@ namespace Traveler_Compass.Models.Domain
     public class Package
     {
         [Key]
-        [Required]
+      
         public int packageId { get; set; }
         [Required]
         [StringLength(50)]

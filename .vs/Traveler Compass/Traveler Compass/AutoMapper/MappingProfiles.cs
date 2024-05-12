@@ -37,6 +37,11 @@ namespace Traveler_Compass.AutoMapper
             CreateMap<Package, CreatePackageDTO>();
             CreateMap<CreatePackageDTO, Package>();
 
+            //CreateMap<RegisterDTO, User>(); // Map RegistrationDto to User
+            //CreateMap<User, RegisterDTO>(); // Map User to RegistrationDto
+
+            //CreateMap<RoleDTO, Role>(); // Map RoleDto to Role
+            //CreateMap<Role, RoleDTO>(); // Map Role to RoleDto
         }
     }
 }

@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("ca7d06c1-3dd9-4c44-8ae0-5b5f2bd7b2ac")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Traveler Compass")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

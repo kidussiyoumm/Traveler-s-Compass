@@ -640,6 +640,35 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.0": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.21.0"
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51819"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Cryptography.Internal/7.0.0": {},
+      "Microsoft.AspNetCore.Cryptography.KeyDerivation/7.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.Internal": "7.0.0"
+        }
+      },
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore/7.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.10",
+          "Microsoft.Extensions.Identity.Stores": "7.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51819"
+          }
+        }
+      },
       "Microsoft.AspNetCore.OpenApi/7.0.7": {
         "dependencies": {
           "Microsoft.OpenApi": "1.4.3"
@@ -1294,6 +1323,31 @@
         }
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions/7.0.0": {},
+      "Microsoft.Extensions.DependencyModel/3.1.6": {
+        "dependencies": {
+          "System.Text.Json": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
+            "assemblyVersion": "3.1.6.0",
+            "fileVersion": "3.100.620.31604"
+          }
+        }
+      },
+      "Microsoft.Extensions.Identity.Core/7.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "7.0.0",
+          "Microsoft.Extensions.Logging": "7.0.0",
+          "Microsoft.Extensions.Options": "7.0.0"
+        }
+      },
+      "Microsoft.Extensions.Identity.Stores/7.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Identity.Core": "7.0.0",
+          "Microsoft.Extensions.Logging": "7.0.0"
+        }
+      },
       "Microsoft.Extensions.Logging/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
@@ -2006,12 +2060,47 @@
       "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
+      "Scrutor/3.3.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+          "Microsoft.Extensions.DependencyModel": "3.1.6"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Scrutor.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.5.0": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
           "Swashbuckle.AspNetCore.Swagger": "6.5.0",
           "Swashbuckle.AspNetCore.SwaggerGen": "6.5.0",
           "Swashbuckle.AspNetCore.SwaggerUI": "6.5.0"
+        }
+      },
+      "Swashbuckle.AspNetCore.Filters/7.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "7.0.0",
+          "Microsoft.OpenApi": "1.4.3",
+          "Scrutor": "3.3.0",
+          "Swashbuckle.AspNetCore.Filters.Abstractions": "7.0.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "6.5.0"
+        },
+        "runtime": {
+          "lib/net5.0/Swashbuckle.AspNetCore.Filters.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.0.0"
+          }
+        }
+      },
+      "Swashbuckle.AspNetCore.Filters.Abstractions/7.0.0": {
+        "runtime": {
+          "lib/net5.0/Swashbuckle.AspNetCore.Filters.Abstractions.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.0.0"
+          }
         }
       },
       "Swashbuckle.AspNetCore.Swagger/6.5.0": {
@@ -2867,10 +2956,13 @@
       "Traveler Compass/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.10",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.9",
           "Swashbuckle.AspNetCore": "6.5.0",
+          "Swashbuckle.AspNetCore.Filters": "7.0.0",
           "System.Net.Http": "4.3.4"
         },
         "runtime": {
@@ -3284,6 +3376,34 @@
       "path": "humanizer.core.zh-hant/2.14.1",
       "hashPath": "humanizer.core.zh-hant.2.14.1.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-q2suMVl1gO6rBJkV7rxm0F2sBufValm2RKxY3zoWN4y6cAufDJYmzpLWPKju3kKFJFKNgivWgoTw0dvf4W5QDQ==",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/7.0.0",
+      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Cryptography.Internal/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hFF+HOqtiNrGtO5ZxLVAFo1ksDLQWf8IHEmGRmcF9azlUWvDLZp8+W8gDyLBcGcY5m3ugEvKy/ncElxO4d0NtQ==",
+      "path": "microsoft.aspnetcore.cryptography.internal/7.0.0",
+      "hashPath": "microsoft.aspnetcore.cryptography.internal.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Cryptography.KeyDerivation/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rCQddWkUxGmObeftM0YVyFOPcXkXDEWKGCc4F1viRLEL4ojIbdKwbOYBSf5hfWDR+NO0aGq8r3a8COvNYN/bZA==",
+      "path": "microsoft.aspnetcore.cryptography.keyderivation/7.0.0",
+      "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mtomuG24wGpvdblVQUj/JHIZ1i8oNhRNHr0V0re8fTkv15hz+AQLdtwbdd6FdINNeXiKi3kGmzZ7PE1KOyzoSg==",
+      "path": "microsoft.aspnetcore.identity.entityframeworkcore/7.0.0",
+      "hashPath": "microsoft.aspnetcore.identity.entityframeworkcore.7.0.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.OpenApi/7.0.7": {
       "type": "package",
       "serviceable": true,
@@ -3514,6 +3634,27 @@
       "sha512": "sha512-h3j/QfmFN4S0w4C2A6X7arXij/M/OVw3uQHSOFxnND4DyAzO1F9eMX7Eti7lU/OkSthEE0WzRsfT/Dmx86jzCw==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/7.0.0",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyModel/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/UlDKULIVkLQYn1BaHcy/rc91ApDxJb7T75HcCbGdqwvxhnRQRKM2di1E70iCPMF9zsr6f4EgQTotBGxFIfXmw==",
+      "path": "microsoft.extensions.dependencymodel/3.1.6",
+      "hashPath": "microsoft.extensions.dependencymodel.3.1.6.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Identity.Core/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cq11jroq2szFcXLJ0IW5BlI7oqq3ZGCu1mXCnpJ8VIvhvpIzf30AOoWR/w3YRVdAgkYzxbUQpKGZd+oxAKQhLA==",
+      "path": "microsoft.extensions.identity.core/7.0.0",
+      "hashPath": "microsoft.extensions.identity.core.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Identity.Stores/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-feaaluQbzJAMMluwSc7Rebm7IEVAD8/5GWt0dMYLE0tcc6gAsHYjBIBrPzmTstORd7k405Qo18FPF/jTfRsM0A==",
+      "path": "microsoft.extensions.identity.stores/7.0.0",
+      "hashPath": "microsoft.extensions.identity.stores.7.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging/7.0.0": {
       "type": "package",
@@ -3914,12 +4055,33 @@
       "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
       "hashPath": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512"
     },
+    "Scrutor/3.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BwqCnFzp2/Z+pq17iztxlIkR/ZANyPRR4PdE57WL1w/JW4AM/2imoxBWTL3+G+YXA46ce4s9OUgwWqTXYrtI8A==",
+      "path": "scrutor/3.3.0",
+      "hashPath": "scrutor.3.3.0.nupkg.sha512"
+    },
     "Swashbuckle.AspNetCore/6.5.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-FK05XokgjgwlCI6wCT+D4/abtQkL1X1/B9Oas6uIwHFmYrIO9WUD5aLC9IzMs9GnHfUXOtXZ2S43gN1mhs5+aA==",
       "path": "swashbuckle.aspnetcore/6.5.0",
       "hashPath": "swashbuckle.aspnetcore.6.5.0.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.Filters/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Acgvq8xRQn/u8BOCsyxsTMNnWbRO2T/pdZUgBwDYGGhNsDG9Qfn+aJK8QicdelRJ+ytuJFD5SD6agl+SW0mkiw==",
+      "path": "swashbuckle.aspnetcore.filters/7.0.0",
+      "hashPath": "swashbuckle.aspnetcore.filters.7.0.0.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.Filters.Abstractions/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+ORv3yPsp45JEPaw7C9WK6I+c5GRXsTgxk4j5jB72w/EZIlUwxa8IW7llZZGy5z+jahfWKj1iYBcLC2mwu9euw==",
+      "path": "swashbuckle.aspnetcore.filters.abstractions/7.0.0",
+      "hashPath": "swashbuckle.aspnetcore.filters.abstractions.7.0.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore.Swagger/6.5.0": {
       "type": "package",

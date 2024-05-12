@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using Traveler_Compass.Models.Domain;
 using Traveler_Compass.Models.DTO.PacakgeDto;
 using Traveler_Compass.Repository.Implementation;
@@ -73,6 +75,7 @@ namespace Traveler_Compass.Controllers
 
         [HttpPost]
         [Route("api/package/CreatePackageAsync")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<PackageDTO>> CreatePackageAsync([FromBody] CreatePackageDTO packageDto)
         {
             try
@@ -91,6 +94,7 @@ namespace Traveler_Compass.Controllers
 
         [HttpPut]
         [Route("api/package/UpdatePackageAsync")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<PackageDTO>> UpdatePackageAsync(int packageId, [FromBody] CreatePackageDTO packageDTO)
         { 
             
@@ -123,6 +127,7 @@ namespace Traveler_Compass.Controllers
 
         [HttpDelete]
         [Route("api/package/{packageId}/DeletepackageByIdAsync")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeletepackageByIdAsync(int packageId)
         {
             var fetchId = await _packageRepository.GetPackageAsyncById(packageId);

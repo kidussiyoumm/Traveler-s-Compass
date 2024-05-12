@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using Traveler_Compass.Models.Domain;
 using Traveler_Compass.Models.DTO;
 using Traveler_Compass.Models.DTO.Agent;
@@ -96,6 +98,7 @@ namespace Traveler_Compass.Controllers
 
         [HttpPost]
         [Route("api/Agent/CreateAgentAsync")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult>CreateAgentAsync([FromBody] CreateAgentDTO AgentDto)
        
         {
@@ -126,6 +129,7 @@ namespace Traveler_Compass.Controllers
         //This Method is used to Fetch agent Id from Agent Repository and delete it from the database
         [HttpDelete]
         [Route("api/Agent/{agentId}/DeleteAgent")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult>DeleteAgent(int agentId)
         {
             //no need to map the deleted user to a DTO since the user
@@ -154,6 +158,7 @@ namespace Traveler_Compass.Controllers
 
         [HttpPut]
         [Route("api/Agent/{agentId}/UpdateAgentUsingId")]
+        [Authorize(Roles = "Admin")]
 
         public async Task<IActionResult>UpdateAgentUsingId(int agentId, [FromBody] AgentDTO agentDTO)
         {

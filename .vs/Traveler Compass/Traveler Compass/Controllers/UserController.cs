@@ -9,6 +9,9 @@ using Traveler_Compass.Repository.Implementation;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using AutoMapper;
 using Traveler_Compass.Models.DTO.UserDto;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
+using Traveler_Compass.Helper;
 
 namespace Traveler_Compass.Controllers
 {
@@ -122,6 +125,7 @@ namespace Traveler_Compass.Controllers
 
         [HttpPost]
         [Route("api/Users/CreateUserAsync")]
+        [Authorize(Roles = "User")] // Secure this action for users with the "Admin" role
         public async Task<IActionResult> CreateUserAsync([FromBody] CreateUserDto userDto)
         {
             try
@@ -129,11 +133,15 @@ namespace Traveler_Compass.Controllers
                 //Converts the clients data from DTO to our representation of User
                 var client = _mapper.Map<User>(userDto);
 
-                var repo = await _userRepository.CreateUserAsync(client);
+                var user = await _userRepository.CreateUserAsync(client);
 
-                var respone = _mapper.Map<UserDTO>(repo);
+                var respone = _mapper.Map<UserDTO>(user);
 
                 return Ok(respone);
+
+              //  var token = JwtTokenUtility.GenerateToken(user.userId.ToString(), user.firstName, user.); // Include user role
+
+              //  return Ok(new { Token = token });
             }
             catch (Exception ex)
             {
