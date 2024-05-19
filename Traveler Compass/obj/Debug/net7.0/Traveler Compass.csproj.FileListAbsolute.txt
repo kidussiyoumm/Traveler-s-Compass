@@ -259,3 +259,13 @@ C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\Traveler Compass\obj\De
 C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\Traveler Compass\obj\Debug\net7.0\Traveler Compass.pdb
 C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\Traveler Compass\obj\Debug\net7.0\Traveler Compass.genruntimeconfig.cache
 C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\Traveler Compass\obj\Debug\net7.0\ref\Traveler Compass.dll
+C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\obj\Debug\net7.0\Traveler Compass.csproj.AssemblyReference.cache
+C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\obj\Debug\net7.0\Traveler Compass.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\obj\Debug\net7.0\Traveler Compass.AssemblyInfoInputs.cache
+C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\obj\Debug\net7.0\Traveler Compass.AssemblyInfo.cs
+C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\obj\Debug\net7.0\Traveler Compass.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\obj\Debug\net7.0\Traveler Compass.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\obj\Debug\net7.0\Traveler Compass.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\obj\Debug\net7.0\Traveler Compass.dll
+C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\obj\Debug\net7.0\refint\Traveler Compass.dll
+C:\Users\Owner\Desktop\Traveler Compass\Traveler Compass\obj\Debug\net7.0\Traveler Compass.pdb
