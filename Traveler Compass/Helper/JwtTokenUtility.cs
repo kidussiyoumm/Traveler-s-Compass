@@ -9,17 +9,28 @@ namespace Traveler_Compass.Helper
 {
     public class JwtTokenUtility : ICreateJWT
     {
+        private readonly IConfiguration _configuration;
+        public JwtTokenUtility(IConfiguration _configuration)
+        {
+            this._configuration = _configuration;
+        }
         public string CreateJWT(User user)
         {
+
             //using SymerticKey
+           
+            var SecurityKey = _configuration.GetSection("Jwt:key").Value;
+
             var key = new SymmetricSecurityKey(Encoding.UTF8.
-                GetBytes("shhh this is secert key for now"));
+                        GetBytes(SecurityKey));
 
             //claims as an array(multiple) bits of infromation from user 
             var claims = new Claim[]
             {
                 new Claim(ClaimTypes.Name, user.email),
-                new Claim(ClaimTypes.NameIdentifier, user.userId.ToString())
+                new Claim(ClaimTypes.NameIdentifier, user.userId.ToString()),
+                new Claim("customClaimType", "customClaimValue")
+
             };
 
             //we need signin creditails to define the secert key and algorithm
@@ -31,7 +42,7 @@ namespace Traveler_Compass.Helper
             var tokenDesciptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims), //takes in the claim
-                Expires = DateTime.UtcNow.AddMinutes(1), // Token expiration time
+                Expires = DateTime.UtcNow.AddHours(1), // Token expiration time
                 SigningCredentials = SigningCredentials
 
             };

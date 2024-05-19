@@ -38,6 +38,7 @@ namespace Traveler_Compass.Controllers
 
         [HttpGet]
         [Route("api/Users/GetAllUserAsync")]
+        [Authorize]
         //Fetchs all users
         public async Task<ActionResult<List<UserDTO>>> GetAllUsersAsync()
         {

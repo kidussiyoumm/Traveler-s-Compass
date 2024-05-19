@@ -4,9 +4,7 @@ namespace Traveler_Compass.Models.DTO.AgentDto
 {
     public class CreateAgentDTO
     {
-        [Key]
        
-        public int agentId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -21,6 +19,7 @@ namespace Traveler_Compass.Models.DTO.AgentDto
 
         [DataType(DataType.EmailAddress)]
         public string email { get; set; }
+        public string agentGender { get; set; } 
         public long phoneNumber { get; set; }
 
     }

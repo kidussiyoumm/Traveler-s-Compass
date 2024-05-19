@@ -24,12 +24,13 @@ namespace Traveler_Compass.Controllers
         }
 
         [HttpPost("register-user")]
-        public async Task<IActionResult> RegisterUser([FromBody] UserDTO userDto, bool isAgent)
+        public async Task<IActionResult> RegisterUser([FromBody] UserDTO userDto, string password, bool isAgent)
         {
             try
             {
+
                 var user = _mapper.Map<User>(userDto);
-                var registeredUser = await _registerRepository.RegisterUserAsync(user, isAgent);
+                var registeredUser = await _registerRepository.RegisterUserAsync(user, password, isAgent);
                 if (isAgent)
                 {
                    var response = _mapper.Map<AgentDTO>(registeredUser);
@@ -46,12 +47,12 @@ namespace Traveler_Compass.Controllers
         }
 
         [HttpPost("register-agent")]
-        public async Task<IActionResult> RegisterAgent([FromBody] AgentDTO agentDto)
+        public async Task<IActionResult> RegisterAgent([FromBody] AgentDTO agentDto, string password)
         {
             try
             {
                 var agent = _mapper.Map<Agent>(agentDto);
-                var registeredAgent = await _registerRepository.RegisterAgentAsync(agent);
+                var registeredAgent = await _registerRepository.RegisterAgentAsync(agent, password);
                 var response = _mapper.Map<AgentDTO>(registeredAgent);
 
                 return Ok(registeredAgent);

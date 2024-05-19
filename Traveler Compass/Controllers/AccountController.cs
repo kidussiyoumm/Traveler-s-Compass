@@ -16,17 +16,21 @@ namespace Traveler_Compass.Controllers
     public class AccountController : Controller
     {
         private readonly IUserRepository _userRepository;
-        private readonly IMapper _mapper;
+       // private readonly IMapper _mapper;
         private readonly ICreateJWT _createJWT;
-        
+     // private readonly IConfiguration _configuration;
+
+
 
         public AccountController(IUserRepository _userRepository,
-                                 IMapper _mapper,
+                               //  IMapper _mapper,
                                  ICreateJWT _createJWT)
+                            //     IConfiguration configuration)
         {
             this._userRepository = _userRepository;
-            this._mapper = _mapper;
+          // this._mapper = _mapper;
             this._createJWT = _createJWT;
+         // this._configuration = configuration; 
         }
 
         [HttpPost]
@@ -35,11 +39,10 @@ namespace Traveler_Compass.Controllers
         {
             try
             {
-                if (string.IsNullOrEmpty(loginReq.ToString()))
+                if (string.IsNullOrEmpty(loginReq.email) || string.IsNullOrEmpty(loginReq.password)) 
                 {
                     return BadRequest("Email and password is Required");
                 }
-                var client = _mapper.Map<User>(loginReq);
                 var fetchUser = await _userRepository.AuthenticateUser(loginReq.email, loginReq.password);
                 if (fetchUser == null)
                 {
@@ -48,8 +51,8 @@ namespace Traveler_Compass.Controllers
 
                 var loginRes = new LoginResDTO();
                 loginRes.email = fetchUser.email;
-                loginRes.token = _createJWT.CreateJWT(fetchUser); 
-                
+                loginRes.token = _createJWT.CreateJWT(fetchUser);
+
 
                 return Ok(loginRes);
             }
@@ -59,7 +62,6 @@ namespace Traveler_Compass.Controllers
                 return Unauthorized();
             }
 
-           
         }
     }
 }

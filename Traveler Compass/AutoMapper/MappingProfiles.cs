@@ -14,7 +14,7 @@ namespace Traveler_Compass.AutoMapper
 
         public MappingProfiles()
         {
-            CreateMap<User, UserDTO>(); 
+            CreateMap<User, UserDTO>();
             CreateMap<UserDTO, User>();
 
             CreateMap<CreateUserDto, User>();
@@ -33,19 +33,10 @@ namespace Traveler_Compass.AutoMapper
             CreateMap<Itinerary, CreateItineraryDTO>();
 
             CreateMap<Package, PackageDTO>();
-            CreateMap<PackageDTO, Package>();   
+            CreateMap<PackageDTO, Package>();
 
             CreateMap<Package, CreatePackageDTO>();
             CreateMap<CreatePackageDTO, Package>();
-
-            CreateMap<User, LoginReqDTO>();
-            CreateMap<LoginReqDTO, User>();
-
-            //CreateMap<RegisterDTO, User>(); // Map RegistrationDto to User
-            //CreateMap<User, RegisterDTO>(); // Map User to RegistrationDto
-
-            //CreateMap<RoleDTO, Role>(); // Map RoleDto to Role
-            //CreateMap<Role, RoleDTO>(); // Map Role to RoleDto
         }
     }
 }

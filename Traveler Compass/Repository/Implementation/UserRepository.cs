@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +28,9 @@ namespace Traveler_Compass.Repository.Implementation
             this._dbContext = dbContext;
         }
 
-     //To get a user from DB
+    //To get a user from DB
+    [Authorize]
+    [HttpGet]
     public async Task<List<User>>GetAllUsersAsync()
     {
         return await _dbContext.users.ToListAsync();
@@ -42,11 +45,8 @@ namespace Traveler_Compass.Repository.Implementation
             return user;
         }
 
-        
-
-      
-
         //To update current user
+        [Authorize]
         public async Task<User> UpdateUserAsync(int userId, User updatedUser)
         {
           
@@ -181,7 +181,7 @@ namespace Traveler_Compass.Repository.Implementation
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                throw new Exception($"No user found with email '{email}'"); ;
+                throw new Exception($"No user found with email {email}"); ;
             }
         }
 

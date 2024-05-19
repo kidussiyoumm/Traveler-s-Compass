@@ -8,23 +8,31 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using Traveler_Compass.Helper;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Allows us to fetch from app.setting and other configurations
+var configuration = builder.Configuration;
+var SecurityKey = configuration.GetSection("Jwt:key").Value;
 
-// Add services to the container.
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
+var key = new SymmetricSecurityKey(Encoding.UTF8.
+            GetBytes(SecurityKey));
+
+// Add JwtBearer support for Authentications
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)//constant AAuthentication Scheme
+    .AddJwtBearer(options => 
+    //AddJwtBearer is an extension method
+    //options to validate Tokens
       {
           options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true, //validates the server generates the tokens
-              ValidateAudience = true, //Validates the recipet of the token
-            ValidateLifetime = true, //checks if the token isn't expired 
-            ValidIssuer = builder.Configuration["Jwt:Issue"], //
-            ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
-                builder.Configuration["Jwt:Key"]))
+          {   //ValidateLifetime = true, //checks if the token isn't expired 
+              //ValidateIssuer = false, //validates the server generates the tokens
+              ValidateIssuerSigningKey = true,
+              ValidateAudience = false, //Validates the recipet of the token
+              ValidateIssuer = false, 
+              IssuerSigningKey = key
+                
         };  //Validated the signature of the token
       }); 
     
@@ -51,7 +59,7 @@ builder.Services.AddSwaggerGen(options =>
 //This is debendancy injection. We use builder services to connect the Db connection string from appsetting 
 builder.Services.AddDbContext<CompassDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("TravlerDbConnectionString"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CompassAppDbConnectionString"));
 });
 
 //Injecting a Service inisde the program.cs file
@@ -77,10 +85,16 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-//enable authentication for your API:
-app.UseAuthentication();
-app.UseAuthorization();
 
+//app.UseRouting();
+
+//app.UseCors();
+
+//enable authentication for your API:
+app.UseAuthentication();//This middleware validate the tokem
+
+app.UseAuthorization();//This middleware will allow the bearer(Access of a protected method
+                       //when and only it gets a vaild token on request
 app.MapControllers();
 
 app.Run();
