@@ -1,0 +1,18 @@
+.propImg{
+
+  height: auto;
+  height: 270px; /* Maintain the aspect ratio */
+
+}
+.card{
+  height:300px; /* the hieght of white card behind the picture*/
+  width: 285px;
+}
+
+.shadow-lg {
+  height:auto;
+  width: auto;
+
+}
+
+
