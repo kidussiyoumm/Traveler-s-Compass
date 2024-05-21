@@ -1,12 +1,8 @@
-<div class="row"> <!-- this will give it a rows structure-->
- <div class="shadow-lg col-sm-4 p-3"> <!-- shadow make the bg darker with lg meaning length-->
-    <div class="card"> <!-- this will give it a card look-->
+ <div class="card"> <!-- this will give it a card look-->
       <img class="propImg" src="assets/images/bali.webp" alt="Property Image"> <!-- Added alt attribute -->
       <div class="card-body p-2"><!-- p stands for padding-->
-        {{property.Id}}
-        {{property.Tour}}
-        {{property.Price}}
+        {{property_pk.Id}} <!--We are geeting this from packages array in parent class-->
+        {{property_pk.Tour}}
+        {{property_pk.Price}}
       </div>
-    </div>
-  </div>
 </div>

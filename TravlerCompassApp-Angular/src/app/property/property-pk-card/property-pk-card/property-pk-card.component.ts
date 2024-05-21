@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
 
 @Component({
   selector: 'app-property-pk-card',
@@ -6,15 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./property-pk-card.component.css']
 })
 export class PropertyPkCardComponent implements OnInit {
-  //property variable with type any
-  property: any = { //to create an object we need {}
-    "Id" : 1,
-    "Tour":"Bali",
-    "Price": 4000
-  }
-  constructor() { }
+ //Angular uses this {@input()} decorator to bind a property as an input paramter
+ // we do this pass from one componet to another
+ @Input() property_pk : any
+
+ constructor() { }
 
   ngOnInit() {
+
   }
 
 }
