@@ -1,13 +1,49 @@
 .propImg{
 
-  height: auto;
-  height: 270px; /* Maintain the aspect ratio */
+  height: 280px;/* Maintain the aspect ratio the legth of the picture */
+  width: 300px;
+  display: block;
+  margin: 0 auto;
+
 
 }
-.card{
+.card:hover img{ /**the hover img is a css feature**/
   height:300px; /* the hieght of white card behind the picture*/
-  width: 285px;
+  width: 340px;
+  transform: scale(0.9,1); /**this accepts a sclae for horizontal and vertical**/
+  transition-duration:500ms; /**this property gives how many seconds does the
+                            transition effect takes in milli-seconds**/
+  transition-timing-function: ease-out; /**this property has a ease in-out for smooth transtion**/
+  opacity: 0.8; /**This will whiten the cards**/
 }
 
+.card img{
+  transform: scale(0.9,1);
+  transition-duration:500ms;
+  transition-timing-function: ease-out;
+}
 
+.list-style{ /**this are the buttons**/
+  position: absolute;
+  bottom: -10%; /**this makes it lower**/
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+  opacity: 0; /**this will give it that whitesh look**/
+}
 
+.card-img-wrapper{
+  overflow: hidden;
+  position: relative;/** to center card **/
+
+}
+
+.card-img-wrapper:hover .list-style {/**this will raise the button when its hovered on it**/
+  bottom: 0;
+  opacity: 1;
+}
+
+.animate{ /**this will give the pop up effect on the list-styles butttons**/
+  transition: all 0.35s ease-in-out;
+}

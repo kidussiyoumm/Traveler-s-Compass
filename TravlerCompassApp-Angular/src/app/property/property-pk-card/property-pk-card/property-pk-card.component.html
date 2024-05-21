@@ -1,6 +1,18 @@
  <div class="card"> <!-- this will give it a card look-->
-      <img class="propImg" src="assets/images/bali.webp" alt="Property Image"> <!-- Added alt attribute -->
+   <div class= "card-img-wrapper">
+   <img class="propImg" src="assets/images/bali.webp" alt="Property Image"> <!-- Added alt attribute -->
       <div class="card-body p-2"><!-- p stands for padding-->
+        <ul class="list-inline text-center list-style animate"> <!--unordered list, the text-center aligns it to the center-->
+          <li class="list-inline-item"><!--This will remove the bullet points-->
+            <!--Bootstrap class btn then btn-priamry for the color-->
+            <button class = "btn btn-primary"><i class="fa-solid fa-plane"></i></button><!--we passed the font awesome icon here-->
+          </li>
+          <li class="list-inline-item">
+            <button class = "btn btn-primary"><i class="fa-regular fa-address-book"></i></button>
+          </li>
+        </ul>
+
+        </div>
         {{property_pk.Id}} <!--We are geeting this from packages array in parent class-->
         {{property_pk.Tour}}
         {{property_pk.Price}}

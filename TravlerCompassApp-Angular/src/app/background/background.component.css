@@ -1,0 +1,34 @@
+.background-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensure no overflow if the image is larger */
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the entire container */
+  z-index: -1; /* Place the image behind the text */
+}
+
+.overlay-text {
+  position: relative;
+  color: whitesmoke; /* Text color to contrast with the background */
+  text-align: center;
+  z-index: 1; /* Ensure the text is above the image */
+  padding: 200px; /* Add some padding if needed */
+  margin-top: 19%; /* Adjust this value to lower the text */
+}
+
+.overlay-text h1 {
+  font-size: 3em; /* Adjust size as needed */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add some shadow for better readability */
+  margin: 0;
+}

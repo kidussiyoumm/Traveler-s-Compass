@@ -1,54 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { Packages_dataService } from '../../../../services/packages_data.service';
 
+//This componet is the one caring the rows/list of packagaes as they car in cards templete
 @Component({
   selector: 'app-property-bg-list',
   templateUrl: './property-bg-list.component.html',
   styleUrls: ['./property-bg-list.component.css']
 })
 export class PropertyBgListComponent implements OnInit {
- //property variable with type any
- packages: Array <any> = [
-  { //to create an object we need {}
-  "Id" : 1,
-  "Tour":"Bali",
-  "description" : "2 Weeks trip in bali",
-  "Price": 4000
-  },
-  {
-  "Id" : 2,
-  "Tour":"Thaliland",
-  "description" : "1 Weeks trip in Thailand",
-  "Price": 4000
-  },
-  {
-    "Id" : 3,
-    "Tour": "Turkey",
-    "description" : "5 days in Turkey",
-    "Price": 4000
-    },
-    {
-      "Id" : 4,
-      "Tour":"Japan",
-      "description" : "2 Weeks trip in Japan",
-      "Price": 4000
-      },
-      {
-        "Id" : 5,
-        "Tour":"Zanzibar",
-        "description" : "2 Weeks trip in Zanzibar",
-        "Price": 4000
-        },
-        {
-          "Id" : 6,
-          "Tour":"Athens",
-          "description" : "9 days in Athens",
-          "Price": 4000
-          }
-  ]
+ //property variable with type any as an array //to create an object we need {}
+ //this is the packages that is on the UI
+ //we weill pass this data to the package.json using http calls
+ packages: any = [];
 
-  constructor() { }
-
-  ngOnInit() {
+//we inject that services to fetch all out package data
+  constructor(private packages_data: Packages_dataService) {
   }
 
+  ngOnInit():void { // this method returns an observables we now need to use a subscirbe method for it to be excuted
+   this.packages_data.getAllPackages().subscribe(
+    data=>{ this.packages =data;//In-order to executed and put to use it needs the get method to be subscribed to it by the consumer.
+  console.log(data)//data is just a name
+
+   }
+   )
+ }
 }
+
+
+
