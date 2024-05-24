@@ -1,0 +1,72 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  padding-top: auto; /*Adjust this value based on your navbar height, to lower the page lower*/
+  line-height: 1.6;
+}
+.container { /*container to hold in the page*/
+  width: 80%;
+  max-width: 1000px;
+  margin: 80px auto 0 auto; /* Add top margin to push down the content/page down */
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.header {
+  text-align: center;
+  padding-bottom: 20px;
+}
+.header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  color: #007BFF;
+}
+.header p {
+  margin: 0;
+  font-size: 1.2em;
+}
+.section {
+  margin-bottom: 20px;
+}
+.section h2 {
+  margin-bottom: 10px;
+  border-bottom: 2px solid #007BFF;
+  padding-bottom: 5px;
+  color: #007BFF;
+}
+.section ul {
+  list-style-type: none;
+  padding: 0;
+}
+.section ul li {
+  padding: 5px 0;
+}
+.highlight {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+.contact-info a {
+  color: #007BFF;
+  text-decoration: none;
+}
+.contact-info a:hover {
+  text-decoration: underline;
+}
+.technical-skills ul,
+.professional-experience ul {
+  margin-left: 20px;
+}
+.professional-experience ul li {
+  margin-bottom: 10px;
+}
+.footer {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.9em;
+  color: #666;
+}

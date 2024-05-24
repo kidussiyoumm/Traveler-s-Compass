@@ -1,39 +1,57 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Travel Compass</a>
+    <a class="navbar-brand" routerLink="/home">Travel Compass</a><!--The router link sends you to the right page-->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <div class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Agent</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Packages</a>
+          <a class="nav-link" routerLink="/agent" routerLinkActive="active">Agent</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Itinerary</a>
+          <a class="nav-link" routerLink="/packageList" routerLinkActive="active">Packages</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <li class="nav-item"><!--Notice having the routerLinkActive="active" is different from having it it the class. -->
+          <a class="nav-link" routerLink="/itinerary" routerLinkActive="active">Itinerary</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">RESUME</a>
+         <li class="nav-item">
+          <!--Having the active inside the class is a bootstrap class to make it stand out-->
+          <a class="nav-link active" routerLink="/resume">RESUME</a>
         </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+
+
+
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-9">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Settings
+            </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/">Account</a></li>
+              <li><a class="dropdown-item" routerLink="/">Become an Agent</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/">Logout</a></li>
+            </ul>
+          </li>
+
+
+
+
+
+
+        <form class="d-flex" role="login">
+        <!--There a bootstrab class routerLinkActive that will give it a brighter look when the mouse hovers over it-->
+        <button class="btn btn-outline-success"  routerLinkActive="/login" >Login</button>
       </form>
+      </ul>
+
+    </div>
     </div>
   </div>
+
 </nav>
+
+
+

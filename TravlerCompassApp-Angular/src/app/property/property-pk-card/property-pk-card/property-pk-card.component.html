@@ -5,15 +5,16 @@
         <ul class="list-inline text-center list-style animate"> <!--unordered list, the text-center aligns it to the center-->
           <li class="list-inline-item"><!--This will remove the bullet points-->
             <!--Bootstrap class btn then btn-priamry for the color-->
-            <button class = "btn btn-primary"><i class="fa-solid fa-plane"></i></button><!--we passed the font awesome icon here-->
+            <button class = "btn btn-primary" routerLink="/packageDetails/{{property_pk.Id}}"><i class="fa-solid fa-plane"></i></button>
+            <!--we passed the font awesome icon here-->
           </li>
           <li class="list-inline-item">
-            <button class = "btn btn-primary"><i class="fa-regular fa-address-book"></i></button>
+            <button class = "btn btn-primary" routerLink="/agent-details"><i class="fa-regular fa-address-book"></i></button>
           </li>
         </ul>
 
         </div>
-        {{property_pk.Id}} <!--We are geeting this from packages array in parent class-->
+        <!--We are geeting this from packages array in parent class-->
         {{property_pk.Tour}}
         {{property_pk.Price}}
       </div>

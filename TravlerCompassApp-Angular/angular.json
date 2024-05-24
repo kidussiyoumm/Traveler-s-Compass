@@ -33,7 +33,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/data"
+              "src/data",
+              "src/Interface"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
