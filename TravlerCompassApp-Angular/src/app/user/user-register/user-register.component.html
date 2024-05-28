@@ -1,43 +1,104 @@
-
+<!--This is called checking at form level if we check for any validations here-->
 <div class="row content-container">
-  <div class="col-6 m-auto">
-  <div class="card m-auto">
-    <div class="card-header">
-      Register
-    </div>
-    <div class="card-body">
-      <form>
-        <div class="form-group col-12">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control">
-        </div>
-
-        <div class="form-group col-12">
-          <label for="email" class="form-label">Email</label>
-          <input type="text" class="form-control">
-        </div>
-
-        <div class="form-group col-12">
-          <label for="passwrod" class="form-label">Password</label>
-          <input type="text" class="form-control">
-        </div>
-
-        <div class="form-group col-12">
-          <label for="cpassword" class="form-label">Confirm Password</label>
-          <input type="text" class="form-control">
-        </div>
-
-        <div class="form-group col-12">
-          <label for="mobile" class="form-label">Mobile</label>
-          <input type="text" class="form-control">
-        </div>
-
-        <div class="form-group col-12">
-          <button type="submit" class="btn btn-primary">Save</button>
-          <button type="reset" class="btn btn-secondary ml-2">Cancel</button>
-        </div>
-      </form>
-    </div>
+  <!-- Added column for the background image -->
+  <div class="background-image-wrapper">
+   <img src="assets/images/maldives.jpg" alt="Compass Image" class="img-fluid background-image">
   </div>
-  </div>
+
+   <!-- Catchy message -->
+ <div class="col-lg-6 catchy-message">
+   <h2>Embark on Your Next Adventure with Us</h2>
+   <p>Sign up now to unlock exclusive travel deals and personalized recommendations tailored just for you.
+      Start exploring the world today</p>
+ </div>
+
+ <div class="register-card-container">
+   <div class="card m-auto">
+     <div class="card-header">
+       Register
+     </div>
+     <div class="card-body">
+       <!--using property binding we need to bind the formGroup-->
+       <!--we will use ngSubmit event to use this onSubmit() function in our component -->
+       <form [formGroup]="registrationForm"  (ngSubmit)="onSubmit()">
+         <div class="form-group col-12">
+           <label for="userName" class="form-label">Name</label>
+           <input type="text" class="form-control" formControlName="userName"><!--binding the formControlName here-->
+         </div>
+         <!--This is using the get method that registrationForm has to get usernName and then checking if its valid and also touched-->
+         <span *ngIf="!userName.valid && userName.touched" class="error-block">
+           Please provide Name
+         </span><!--This is the global css we passed-->
+
+         <div class="form-group col-12">
+           <label for="email" class="form-label">Email</label>
+           <input type="text" class="form-control" formControlName="email" placeholder="name@example.com"><!--this is a plcae holder-->
+                                   <!--we are using the hasError fuction(of registration form) if so fire the response-->
+           <span *ngIf="!email.valid && email.touched " class="error-block">
+             <span *ngIf="email.hasError('required')"> Please Provide Email </span>
+             <span *ngIf="email.hasError('email')"> Please Provide Valid Email </span>
+           </span><!--we are using the hasError fuction(of registration form) if so fire the response-->
+         </div>
+
+         <div class="form-group col-12">
+           <label for="password" class="form-label">Password</label>
+           <input type="password" class="form-control" formControlName="password">
+           <span *ngIf="!password.valid && password.touched " class="error-block">
+           <!--we are using the hasError fuction(of registration form) if so fire the response-->
+             <span *ngIf="password.errors?.['required']"> Please Provide Password </span>
+             <span *ngIf="password.errors?.['minlength']"> Password should not be less than 8 characters </span>
+           </span>
+         </div>
+
+         <div class="form-group col-12">
+           <label for="confirmPassword" class="form-label">Confirm Password</label>
+           <input type="password" class="form-control" formControlName="confirmPassword">
+           <span *ngIf="!confirmPassword.valid && confirmPassword.touched " class="error-block">
+             <span *ngIf="confirmPassword.hasError('required')"> Please Confirm Password </span>
+           </span><!--We are checking if its valid outside and with it first checking if they are not matched-->
+         </div>
+
+         <div class="form-group col-12">
+           <label for="address" class="form-label">Address</label>
+           <input type="text" class="form-control" formControlName="address">
+           <span *ngIf="!address.valid && address.touched" class="error-block">
+             Please provide Address
+           </span>
+         </div>
+
+         <div class="form-group col-12">
+           <label for="phoneNumber" class="form-label">Mobile</label>
+           <input type="text" class="form-control" formControlName="phoneNumber">
+           <span *ngIf="!phoneNumber.valid && phoneNumber.touched" class="error-block">
+             Please provide a valid Mobile number
+           </span>
+         </div>
+
+         <div class="form-group col-12">
+           <button type="submit" class="btn btn-primary me-2">Register</button>
+           <button type="reset" class="btn btn-secondary ml-2">Cancel</button>
+         </div>
+         <!-- Form Values: {{registrationForm.value | json}} <br> To check the vales and see if there are vaild. as a json value
+                                 Form status: {{registrationForm.valid}} -->
+       </form>
+     </div>
+   </div>
+ </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

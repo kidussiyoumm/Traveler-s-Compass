@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 //Angular now shares a single instance of services throughout the full application
 import { Routes, RouterModule } from '@angular/router';
 //Angular uses routes to navigate through different componets in single page application
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +17,6 @@ import { ItineraryComponent } from './Itinerary/Itinerary.component';
 import { AgentComponent } from './agent/agent.component';
 import { ResumeComponent } from './resume/resume.component';
 import { LoginComponent } from './login/login.component';
-import { ContactComponent } from './contact/contact.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { PackageComponent } from './package/package.component';
@@ -26,6 +26,11 @@ import { AgentDetailsComponent } from './agent/agent-details/agent-details/agent
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AccountComponent } from './account/account.component';
+import { AgentRegisterationComponent } from './agent-registeration/agent-registeration.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { UserServiceService } from '../services/userServices/user-service.service';
+import { AlertifyService } from '../services/alertifyNotification/alertify.service';
 
 
 //To define mapping in different components we create a const with an array
@@ -34,7 +39,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 {path: 'agent-details/:id', component : AgentComponent},
 {path: 'itinerary' , component : ItineraryComponent},
 {path: 'login' , component : LoginComponent},
-{path: 'contact-us' , component : ContactComponent},
 {path: 'kiuds_resume_2024' , component : ResumeComponent},
 {path: 'register' , component : RegisterComponent},
 {path: 'packageList' , component : PackageComponent},
@@ -44,7 +48,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
 { path: 'user-login', component: UserLoginComponent },
 { path: 'user-register', component: UserRegisterComponent},
-{ path: '**', component: HomeComponent }
+{ path: 'user-account', component: AccountComponent},
+{ path: 'register-agent', component: AgentComponent},
+{ path: 'contact-us', component: ContactUsComponent}
+
+
 
 
 
@@ -62,25 +70,30 @@ import { ReactiveFormsModule } from '@angular/forms';
     AgentComponent,
     ResumeComponent,
     LoginComponent,
-    ContactComponent,
     RegisterComponent,
     HomeComponent,
     PropertyDetailComponent,
     AgentDetailsComponent,
     UserLoginComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    AccountComponent,
+    AgentRegisterationComponent,
+    ContactUsComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, //Create Services to be consumed
     RouterModule.forRoot(appRoutes), //This will tell Angluar that routes exist in this application
-    ReactiveFormsModule //Adding reactive form module to be used
+    ReactiveFormsModule, //Adding reactive form module to be used
+    FormsModule //this is for templete driven forms
   ],
   providers: [
     provideClientHydration(),
     Packages_dataService, //regestering it here in the 'root' level from the services class
-    Agent_dataService
+    Agent_dataService,
+    UserServiceService,
+    AlertifyService
   ],
   bootstrap: [AppComponent]
 })

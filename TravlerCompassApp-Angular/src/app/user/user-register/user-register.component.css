@@ -1,3 +1,87 @@
+/* Adjusting the overall container */
 .content-container {
-  padding-top: 70px; /* Adjust the value based on the height of your navbar */
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  align-items: flex-start; /* Align items to the top */
+  justify-content: center;/* Spread items evenly across the container */  background-size: cover;
+  background-position: center;
+  padding-top: 28px; /* Adjust padding to account for the navbar */
+}
+
+/* Register card container */
+.register-card-container {
+  width: 100%;
+  max-width: 400px; /* Adjust th e maximum width of the card */
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+ /* margin-top: 50px;*/
+  margin-top: 30px; /* Adjusted to match the padding-top of .content-container */
+}
+
+.background-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Position the background behind other elements */
+}
+
+.background-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.register-card-container {
+  width: 100%;
+  max-width: 400px; /* Adjust the maximum width of the card */
+  padding: 20px;
+  position: relative;
+  z-index: 1;  /* Ensure the card appears above the background */
+  margin-top: 0px; /* Adjusted to match the padding-top of .content-container */
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.8); /* Make the card slightly transparent */
+  border-radius: 10px; /* Optional: Add rounded corners to the card */
+  padding: 20px 20px 10px 20px; /* Adjust padding: top, right, bottom, left */
+}
+
+.card-header {
+  background-color: rgba(0, 0, 0, 0.1); /* Optional: Make the header slightly transparent */
+}
+
+@media (max-width: 992px) {
+  .background-image {
+    display: none;
+  }
+}
+
+
+/* Styling the catchy message */
+.catchy-message {
+  text-align:left;
+  color: #000000;
+  text-shadow: #4a3131;/* Center-align the text */
+  margin-top: 30px; /* Move the text closer to the navbar */
+  padding: 20px; /* Padding around the message */
+  max-width: 500px; /* Set a maximum  width for the message container */
+  font-family: Arial, sans-serif; /* Use a standard sans-serif font */
+}
+
+.catchy-message h2 {
+  font-size: 36px; /* Increase heading font size */
+  margin-bottom: 15px; /* Bottom margin for spacing */
+
+}
+
+.catchy-message p {
+  font-size: 24px; /* Increase paragraph font size */
+  line-height: 1.6; /* Line height for readability */
+  margin-bottom: 0; /* Remove bottom margin for the last paragraph */
+  padding-top: 0px; /* Remove extra padding */
 }
