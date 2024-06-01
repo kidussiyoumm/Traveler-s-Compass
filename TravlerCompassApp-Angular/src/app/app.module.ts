@@ -17,7 +17,6 @@ import { ItineraryComponent } from './Itinerary/Itinerary.component';
 import { AgentComponent } from './agent/agent.component';
 import { ResumeComponent } from './resume/resume.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { PackageComponent } from './package/package.component';
 import { Agent_dataService } from '../services/agentsServices/agent_data.service';
@@ -27,20 +26,20 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountComponent } from './account/account.component';
-import { AgentRegisterationComponent } from './agent-registeration/agent-registeration.component';
+import { AgentRegisterationComponent } from './agent/agent-registeration/agent-registeration.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { UserServiceService } from '../services/userServices/user-service.service';
 import { AlertifyService } from '../services/alertifyNotification/alertify.service';
+import { AuthService } from '../services/auth/auth.service';
 
 
 //To define mapping in different components we create a const with an array
  const appRoutes : Routes =[ //each route in this array is a Javascript object
 {path: 'agent' , component : AgentComponent},
-{path: 'agent-details/:id', component : AgentComponent},
+{path: 'agent-details/:id', component : AgentDetailsComponent},
 {path: 'itinerary' , component : ItineraryComponent},
 {path: 'login' , component : LoginComponent},
 {path: 'kiuds_resume_2024' , component : ResumeComponent},
-{path: 'register' , component : RegisterComponent},
 {path: 'packageList' , component : PackageComponent},
 {path: 'packageDetails/:id', component: PropertyDetailComponent },
 {path: 'resume' , component : ResumeComponent},
@@ -49,7 +48,7 @@ import { AlertifyService } from '../services/alertifyNotification/alertify.servi
 { path: 'user-login', component: UserLoginComponent },
 { path: 'user-register', component: UserRegisterComponent},
 { path: 'user-account', component: AccountComponent},
-{ path: 'register-agent', component: AgentComponent},
+{ path: 'register-agent', component: AgentRegisterationComponent},
 { path: 'contact-us', component: ContactUsComponent}
 
 
@@ -70,7 +69,6 @@ import { AlertifyService } from '../services/alertifyNotification/alertify.servi
     AgentComponent,
     ResumeComponent,
     LoginComponent,
-    RegisterComponent,
     HomeComponent,
     PropertyDetailComponent,
     AgentDetailsComponent,
@@ -93,7 +91,8 @@ import { AlertifyService } from '../services/alertifyNotification/alertify.servi
     Packages_dataService, //regestering it here in the 'root' level from the services class
     Agent_dataService,
     UserServiceService,
-    AlertifyService
+    AlertifyService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

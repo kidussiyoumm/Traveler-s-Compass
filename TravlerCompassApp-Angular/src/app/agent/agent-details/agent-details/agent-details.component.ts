@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -9,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agent-details.component.css']
 })
 export class AgentDetailsComponent implements OnInit {
-
-  constructor() { }
+  public agentDetails!: number;
+  constructor(
+    private route: ActivatedRoute) { }
 
   ngOnInit():void {
+    this.agentDetails = this.route.snapshot.params['Id'];
 
         }
-       }
+}

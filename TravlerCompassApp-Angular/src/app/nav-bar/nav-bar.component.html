@@ -22,32 +22,53 @@
 
 
 
-        <ul class="navbar-nav  me-5">
-          <li class="nav-item dropdown me-5 me-5">
-             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             Settings
+        <ul class="navbar-nav me-5">
+          <li class="nav-item dropdown me-5">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Settings
             </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" routerLink="/user-account">Account</a></li>
-              <li><a class="dropdown-item" routerLink="/register-agent">Become an Agent</a></li>
-              <li><a class="dropdown-item" routerLink="/contact-us">Contact Us</a></li>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" routerLink="/user-account">
+                  <i class="fa-solid fa-gear me-2"></i>Account
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/register-agent">
+                  <i class="fa-solid fa-user me-2"></i>Become an Agent
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/contact-us">
+                  <i class="fa-regular fa-envelope me-2"></i>Contact Us
+                </a>
+              </li>
+              <!--
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" routerLink="/">Logout</a></li>
+              <li><a *ngIf="loggedIn()" class="dropdown-item" routerLink="/">Logout</a></li>
+              -->
             </ul>
           </li>
 
 
-        <form class="d-flex" role="login">
+
+
+
+        <form class="d-flex me-5" role="login"> <!--using string interpolation-->
+
+            <div class="welcome-message input me-2" *ngIf="loggedIn()"> Welcome, {{ logginUserName }} </div>
+
         <!--There a bootstrab class routerLinkActive that will give it a brighter look when the mouse hovers over it-->
-        <button class="btn btn-outline-success me-2" routerLink="/user-register"  >Register</button>
-        <button class="btn btn-outline-success" routerLink="/user-login" routerLinkActive="active" >Login</button>
+        <button *ngIf="!loggedIn()" class="btn btn-outline-success me-2" routerLink="/user-register"  >Register</button>
+        <button *ngIf="!loggedIn()" class="btn btn-outline-success" routerLink="/user-login" routerLinkActive="active" >Login</button>
+        <button *ngIf="loggedIn()" (click)="logOut()" class="btn btn-outline-success" routerLink="/home" routerLinkActive="active" >Logout</button>
+        <!--This will check if you're logged in or logout from the control-->
+
       </form>
       </ul>
-
     </div>
     </div>
   </div>
-
 </nav>
 
 

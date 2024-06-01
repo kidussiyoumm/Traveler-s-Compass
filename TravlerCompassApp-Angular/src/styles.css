@@ -1,4 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'assets/forms/form.css';
-@import '../node_modules/alertifyjs/build/css/alertify.min.css';
+@import 'assets/forms/form.css'; /*this is the error-block to be globally avaible*/
+@import '../node_modules/alertifyjs/build/css/alertify.min.css';/*this for thealrtert notifcation to be globally available*/
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';

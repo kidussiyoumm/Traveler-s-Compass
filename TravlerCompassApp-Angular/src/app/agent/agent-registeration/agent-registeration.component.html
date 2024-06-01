@@ -1,0 +1,145 @@
+<section class="h-100 bg-dark">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card card-registration my-4">
+          <div class="row g-0">
+            <div class="col-xl-6 d-none d-xl-block">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                alt="Sample photo" class="img-fluid"
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+            </div>
+
+            <div class="col-xl-6">
+              <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase">Agency registration form</h3>
+                <form [formGroup]="registerAgentForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                      <input type="text" id="form3Example1m" class="form-control form-control-lg" formControlName = "firstName"/>
+                      <label class="form-label" for="form3Example1m">First name</label>
+                    </div>
+                      <span *ngIf="!firstName.valid && firstName.touched" class="error-block">
+                        Please provide first Name
+                      </span><!--This is the global css we passed-->
+
+
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                      <input type="text" id="form3Example1n" class="form-control form-control-lg" formControlName = "lastName"/>
+                      <label class="form-label" for="form3Example1n">Last name</label>
+                    </div>
+                    <span *ngIf="!lastName.valid && lastName.touched" class="error-block">
+                      Please provide Last Name
+                    </span><!--This is the global css we passed-->
+                  </div>
+
+                </div>
+                <div>
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="text" id="form3Example97" class="form-control form-control-lg" formControlName="email"/>
+                  <label class="form-label" for="form3Example97">Email</label>
+
+                <span *ngIf="!email.valid && email.touched" class="error-block">
+                  Please provide Correct Email
+                </span><!--This is the global css we passed-->
+              </div>
+            </div>
+
+            <div>
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text" id="form3Example97" class="form-control form-control-lg" formControlName="password"/>
+                <label class="form-label" for="form3Example97">Password</label>
+
+              <span *ngIf="!password.valid && password.touched" class="error-block">
+                Please provide Password
+              </span><!--This is the global css we passed-->
+            </div>
+          </div>
+
+
+          <div>
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input type="text" id="form3Example97" class="form-control form-control-lg" formControlName="confirmPassword"/>
+              <label class="form-label" for="form3Example97">Confirm Password</label>
+
+            <span *ngIf="!confirmPassword.valid && confirmPassword.touched" class="error-block">
+              Please Confirm Password
+            </span><!--This is the global css we passed-->
+          </div>
+        </div>
+
+
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                      <input type="text" id="form3Example1m1" class="form-control form-control-lg" formControlName ="companyTitle"/>
+                      <label class="form-label" for="form3Example1m1">Company Title</label>
+                    </div>
+                    <span *ngIf="!companyTitle.valid && companyTitle.touched" class="error-block">
+                      Please provide a Title for your Company
+                    </span><!--This is the global css we passed-->
+
+                  </div>
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="text" id="form3Example8" class="form-control form-control-lg" formControlName="address"/>
+                  <label class="form-label" for="form3Example8">Address</label>
+
+                <span *ngIf="!address.valid && address.touched" class="error-block">
+                  Please provide a Address for your Company
+                </span><!--This is the global css we passed-->
+              </div>
+
+
+                <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                  <h6 class="mb-0 me-4">Gender: </h6>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="gender" id="femaleGender"
+                      value="option1" formControlName="gender" />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="gender" id="maleGender"
+                      value="option2" formControlName="gender"/>
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0">
+                    <input class="form-check-input" type="radio" name="gender" id="otherGender"
+                      value="option3" formControlName="gender"/>
+                    <label class="form-check-label" for="otherGender">Other</label>
+                  </div>
+
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="text" id="form3Example99" class="form-control form-control-lg" formControlName="phoneNumber"/>
+                  <label class="form-label" for="form3Example99">Phone Number</label>
+
+                <span *ngIf="!phoneNumber.valid && phoneNumber.touched" class="error-block">
+                  Please provide a phoneNumber for your Company
+                </span><!--This is the global css we passed-->
+              </div>
+
+                <div class="d-flex justify-content-end pt-3">
+                  <button  type="reset" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg">Reset all</button>
+                  <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-lg ms-2">Submit form</button>
+                </div>
+              </form>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

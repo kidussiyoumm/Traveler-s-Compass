@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators ,ValidatorFn, AbstractControl } from '@angular/forms';
+import { Component, OnInit, Inject, PLATFORM_ID  } from '@angular/core';
+import { FormControl, FormGroup, Validators ,ValidatorFn, AbstractControl } from '@angular/forms';
 import { UserServiceService } from '../../../services/userServices/user-service.service';
 import { UserInterface } from '../../model/user-interface';
 import { AlertifyService } from '../../../services/alertifyNotification/alertify.service';
@@ -11,8 +11,8 @@ import { AlertifyService } from '../../../services/alertifyNotification/alertify
 })
 export class UserRegisterComponent implements OnInit {
 
-  constructor(private userService: UserServiceService
-      //        private alertNotification: AlertifyService
+  constructor(private userService: UserServiceService,
+              private alertNotification: AlertifyService
   ) { }
 //This formGroup is a class to organize the related form control
 //acts as a wraper around the collection of the form controlls
@@ -33,6 +33,9 @@ export class UserRegisterComponent implements OnInit {
       phoneNumber: new FormControl(null, [Validators.required, Validators.minLength(10)])
 
     }); //custom valdations , { validators: this.passwordMatchingValidator }
+
+
+
   }    //this is called checking at control level
 
   //we need to make a custome cross field validation to compare the the passwords
@@ -92,7 +95,7 @@ get phoneNumber() {
     if (this.registrationForm.valid) {
       // Ensure this.user is initialized
       if (!this.user) {
-        this.user = {} as UserInterface;
+        this.user = {} as UserInterface; // this is using the interface as a array
       }
 
 
@@ -100,14 +103,16 @@ get phoneNumber() {
     this.userService.addUser(this.user);//using our userservice to use addUser method
     this.registrationForm.reset(); //this will reset the form
     this.userSubmitted =false;//we set it back to false
-    //this.alertNotification.success("Congrats, you are successfully registered");
+    this.alertNotification.success("Congrats, you are successfully registered");
     //this is checking to see if the form we submmited is valid or not and returning a notification
     }else{
-     // this.alertNotification.error('Kindy resubmit form with valid input');
+      this.alertNotification.error('Kindy resubmit form with valid input');
     }
 
 
-  }
+}
+
+
 
 
 

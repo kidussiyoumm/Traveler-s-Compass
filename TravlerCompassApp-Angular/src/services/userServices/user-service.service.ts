@@ -13,7 +13,7 @@ addUser(user: any){//this method is to add multiple users
   if (localStorage.getItem('Users')){ //But first we check using a if condition if there is a key 'users' already
     users = JSON.parse(localStorage.getItem('Users')!);//If they key is present then assign that value to that key //Added ! after localStorage.getItem('Users') to assert that the result is not null.
      //parse is to convert a string into a json object
-     users = [user, ...users];//we are adding that user to users array using this ... dots
+     users = [user, ...users];//we are adding that user to users array using this ... dots its called a spread operator
   } else{
     users = [users]; // incase there is no key then simply just assign the key to the array
   }
