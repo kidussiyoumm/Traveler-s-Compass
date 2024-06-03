@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators ,ValidatorFn, AbstractControl } from
 import { UserServiceService } from '../../../services/userServices/user-service.service';
 import { UserInterface } from '../../model/user-interface';
 import { AlertifyService } from '../../../services/alertifyNotification/alertify.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
@@ -11,14 +11,18 @@ import { AlertifyService } from '../../../services/alertifyNotification/alertify
 })
 export class UserRegisterComponent implements OnInit {
 
-  constructor(private userService: UserServiceService,
-              private alertNotification: AlertifyService
-  ) { }
 //This formGroup is a class to organize the related form control
 //acts as a wraper around the collection of the form controlls
-  registrationForm! : FormGroup;
-  user!: UserInterface;//user is implementing user-interface
-  userSubmitted!: boolean; //condition to check if a form is sumbitted no null values can pass as sumbisson
+registrationForm! : FormGroup;
+user!: UserInterface;//user is implementing user-interface
+userSubmitted!: boolean; //condition to check if a form is sumbitted no null values can pass as sumbisson
+
+
+
+  constructor(private userService: UserServiceService,
+              private alertNotification: AlertifyService,
+              private router: Router
+  ) { }
 
 
 
@@ -95,7 +99,7 @@ get phoneNumber() {
     if (this.registrationForm.valid) {
       // Ensure this.user is initialized
       if (!this.user) {
-        this.user = {} as UserInterface; // this is using the interface as a array
+        this.user = {} as UserInterface;  // this is using the interface as a array
       }
 
 
@@ -105,9 +109,11 @@ get phoneNumber() {
     this.userSubmitted =false;//we set it back to false
     this.alertNotification.success("Congrats, you are successfully registered");
     //this is checking to see if the form we submmited is valid or not and returning a notification
+    this.router.navigate(['/user-login']);
     }else{
       this.alertNotification.error('Kindy resubmit form with valid input');
     }
+
 
 
 }

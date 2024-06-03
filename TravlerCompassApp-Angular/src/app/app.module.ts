@@ -16,7 +16,6 @@ import { Packages_dataService } from '../services/packages_data.service';
 import { ItineraryComponent } from './Itinerary/Itinerary.component';
 import { AgentComponent } from './agent/agent.component';
 import { ResumeComponent } from './resume/resume.component';
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PackageComponent } from './package/package.component';
 import { Agent_dataService } from '../services/agentsServices/agent_data.service';
@@ -31,6 +30,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { UserServiceService } from '../services/userServices/user-service.service';
 import { AlertifyService } from '../services/alertifyNotification/alertify.service';
 import { AuthService } from '../services/auth/auth.service';
+import { AddPackageComponent } from './agent/add-package/add-package/add-package.component';
+import { AddItineraryComponent } from './agent/add-itinerary/add-itinerary/add-itinerary.component';
 
 
 //To define mapping in different components we create a const with an array
@@ -38,8 +39,6 @@ import { AuthService } from '../services/auth/auth.service';
 {path: 'agent' , component : AgentComponent},
 {path: 'agent-details/:id', component : AgentDetailsComponent},
 {path: 'itinerary' , component : ItineraryComponent},
-{path: 'login' , component : LoginComponent},
-{path: 'kiuds_resume_2024' , component : ResumeComponent},
 {path: 'packageList' , component : PackageComponent},
 {path: 'packageDetails/:id', component: PropertyDetailComponent },
 {path: 'resume' , component : ResumeComponent},
@@ -49,7 +48,9 @@ import { AuthService } from '../services/auth/auth.service';
 { path: 'user-register', component: UserRegisterComponent},
 { path: 'user-account', component: AccountComponent},
 { path: 'register-agent', component: AgentRegisterationComponent},
-{ path: 'contact-us', component: ContactUsComponent}
+{ path: 'contact-us', component: ContactUsComponent},
+{ path: 'add-package', component: ContactUsComponent},
+{ path: 'book-package', component: ContactUsComponent}
 
 
 
@@ -68,7 +69,6 @@ import { AuthService } from '../services/auth/auth.service';
     ItineraryComponent,
     AgentComponent,
     ResumeComponent,
-    LoginComponent,
     HomeComponent,
     PropertyDetailComponent,
     AgentDetailsComponent,
@@ -76,7 +76,10 @@ import { AuthService } from '../services/auth/auth.service';
     UserRegisterComponent,
     AccountComponent,
     AgentRegisterationComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    AddPackageComponent,
+    AddItineraryComponent
+
    ],
   imports: [
     BrowserModule,

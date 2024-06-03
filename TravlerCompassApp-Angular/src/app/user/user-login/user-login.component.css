@@ -1,3 +1,17 @@
 .container-fluid{
   padding-top: 4%;
 }
+
+.btn-gray {
+  background-color: gray;
+  color: white;
+  padding: 0.50rem 1rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-gray:hover {
+  background-color: darkgray;
+}
+.btn-info:hover {
+  background-color: lightskyblue;
+}

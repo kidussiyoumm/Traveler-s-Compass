@@ -1,7 +1,9 @@
 export interface IAgent{
-  Id: number;
-  agentName: string,
-  companyName: string,
-  discription: string
+  firstName: string;
+  lastName: string;
+  companyName: string;
+  email: string;
+  address: string;
+  mobile: number;
 
 }

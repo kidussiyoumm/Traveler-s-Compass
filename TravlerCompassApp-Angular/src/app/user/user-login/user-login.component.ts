@@ -25,12 +25,13 @@ export class UserLoginComponent implements OnInit {
   onLogin(loginForm: NgForm){
     if (loginForm.valid) { //we pass the authenticate by passing the loginForms value
       console.log('Form Value:', loginForm.value); //This will log the form values
-      const email = loginForm.value.email;
-      const password = loginForm.value.password;
+      const email = loginForm.value.email;//this will get the email
+      const password = loginForm.value.password;//this will grt the password form form
       const token = this.authService.authUser({ email, password });//we will use Auth services to authenticate the user and password from the local storage
       // Handle the login logic here
 
-      if (token) {
+
+      if (token) {//token.userName
         localStorage.setItem('token', token.userName)
         console.log('Login Successful');
         this.alertifyNotification.success("successfully logged in");

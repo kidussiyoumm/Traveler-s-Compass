@@ -17,7 +17,7 @@ export class AgentComponent implements OnInit {
 
   constructor(private agent_data:Agent_dataService) {}
 
-
+//this one is a void methods that gets all agents
 ngOnInit():void {// this method returns an observables we now need to use a subscirbe method for it to be excuted
  this.agent_data.getAllAgents().subscribe( //gets our agents from packages services
  data=>{ this.agents =data; //we are setting the data to the egent array then printing console.log

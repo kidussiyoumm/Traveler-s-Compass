@@ -37,7 +37,7 @@ getAllAgents(): Observable<IAgent[]> {
        //parse is to convert a string into a json object
        agentsArray = [agent, ...agentsArray];//we are adding that agents to agentsArray array using this ... dots meaning its trailing and we are adding in front of the array
     } else{
-      agentsArray = [agentsArray]; // incase there is no key then simply just assign the key to the array
+      agentsArray = [agent]; // incase there is no key then simply just assign the key to the array
     }
        localStorage.setItem('Agents' ,JSON.stringify(agentsArray)); //this is a key : value pair // the key is to store multipe agents
   }                               //this.user is returning an json object so we have to use the Json.strringf method to chage it to a string

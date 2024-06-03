@@ -17,7 +17,8 @@ export class AgentRegisterationComponent implements OnInit {
 registerAgentForm!: FormGroup;
 agent!: IAgent;//we will store form information in here
 agentSubmitted!: boolean; //condition to check if a form is sumbitted no null values can pass as sumbisson
-  constructor(private alertNotification: AlertifyService,
+
+constructor(private alertNotification: AlertifyService,
               private agentService: Agent_dataService,
               private router: Router
 
@@ -92,11 +93,30 @@ get firstName() { //no arguments and must return a value
     this.router.navigate(['/user-login']);
   }else{
       this.alertNotification.error('Kindy resubmit form with valid input');
-    }
+  }
 
 
 }
- }
+
+
+//This method will map the form values to the user interface in the domain model
+//this will get the user object containg the value we would like to save in broswers stroage
+AagentData(): IAgent{
+  return this.agent = {
+firstName: this.firstName.value,
+lastName: this.lastName.value, //this.user is from the getter method we are fecthing the cuurent value
+email: this.email.value,
+mobile: this.phoneNumber.value,
+address: this.address.value,
+companyName: this.companyTitle.value,
+
+
+  };
+}
+
+
+
+}
 
 
 
