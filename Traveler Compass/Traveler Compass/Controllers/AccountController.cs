@@ -13,6 +13,7 @@ namespace Traveler_Compass.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //Account controller
     public class AccountController : Controller
     {
         private readonly IUserRepository _userRepository;

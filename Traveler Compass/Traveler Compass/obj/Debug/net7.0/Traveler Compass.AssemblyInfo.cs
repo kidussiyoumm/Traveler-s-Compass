@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Traveler Compass")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bfca5a05dfb3a27da946146982959c0ec6103764")]
 [assembly: System.Reflection.AssemblyProductAttribute("Traveler Compass")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Traveler Compass")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
