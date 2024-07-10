@@ -7,16 +7,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/agent" routerLinkActive="active">Agent</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/packageList" routerLinkActive="active">Packages</a>
-        </li>
-        <li class="nav-item"><!--Notice having the routerLinkActive="active" is different from having it it the class. -->
-          <a class="nav-link" routerLink="/itinerary" routerLinkActive="active">Itinerary</a>
-        </li>
-         <li class="nav-item">
+
+        <li class="nav-item" *ngFor="let menu of filteredMenu">
+          <a class="nav-link" [routerLink]="menu.path" routerLinkActive="active">{{ menu.text }}</a>
+        </li> 
+
+        
+         <li class="nav-item"> 
           <!--Having the active inside the class is a bootstrap class to make it stand out-->
           <a class="nav-link active" routerLink="/resume">RESUME</a>
         </li>

@@ -1,23 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertifyService } from '../../services/alertifyNotification/alertify.service';
-import { pathConstants } from '../../assets/pathConstants/pathsConstants';
+import { PathConstant } from '../../services/PathConstants/pathConstant';
 import { Router } from '@angular/router';
+import { MenuServiceService } from '../../services/menuServices/menu-service.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+
+
 loggInUserName: string | null = '';
-menus: any[] = [];
-filteredMenus: any[] = [];
-role: string = '';
+filteredMenu: any[] = [];
+
+
   constructor(private alertNotification: AlertifyService,
-              private router: Router
-  ) { }
+              private router: Router,
+              private menuServices: MenuServiceService
 
-  ngOnInit() {
+  ) { 
 
+  
+  }
+
+  ngOnInit(): void{
+    this.menuServices.filteredMenu$.subscribe(menu => {
+      this.filteredMenu = menu;
+    });
 
 }
 
@@ -29,7 +39,7 @@ loggedIn(){//if the user is logged in it will contain a value
   return this.loggInUserName;
 }
 
-logOut(){//if the user is logged in it will contain a value and remove it from local storage
+logOut(): void {//if the user is logged in it will contain a value and remove it from local storage
    localStorage.removeItem('token');
    this.alertNotification.success("You have logout out");
    this.router.navigate(['/user-login']); // Redirect to the login page

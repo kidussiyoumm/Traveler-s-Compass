@@ -32,32 +32,51 @@ import { AlertifyService } from '../services/alertifyNotification/alertify.servi
 import { AuthService } from '../services/auth/auth.service';
 import { AddPackageComponent } from './agent/add-package/add-package/add-package.component';
 import { AddItineraryComponent } from './agent/add-itinerary/add-itinerary/add-itinerary.component';
+import { BookPackageComponent } from './Booking/book-package/book-package.component';
+import { BookItineraryComponent } from './Booking/book-itinerary/book-itinerary.component';
+import { MenuServiceService } from '../services/menuServices/menu-service.service';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
 //To define mapping in different components we create a const with an array
  const appRoutes : Routes =[ //each route in this array is a Javascript object
-{path: 'agent' , component : AgentComponent},
-{path: 'agent-details/:id', component : AgentDetailsComponent},
-{path: 'itinerary' , component : ItineraryComponent},
-{path: 'packageList' , component : PackageComponent},
-{path: 'packageDetails/:id', component: PropertyDetailComponent },
-{path: 'resume' , component : ResumeComponent},
-{ path: 'home', component: HomeComponent }, // Use HomeComponent for the home route
-{ path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
+{ path: '', redirectTo: '/user-login', pathMatch: 'full'},
 { path: 'user-login', component: UserLoginComponent },
-{ path: 'user-register', component: UserRegisterComponent},
-{ path: 'user-account', component: AccountComponent},
+{ path: 'resume' , component : ResumeComponent},
 { path: 'register-agent', component: AgentRegisterationComponent},
 { path: 'contact-us', component: ContactUsComponent},
-{ path: 'add-package', component: ContactUsComponent},
-{ path: 'book-package', component: ContactUsComponent}
+{ path:  'agents' , component : AgentComponent},
+{ path: 'agent-details/:id', component : AgentDetailsComponent},
+{ path: 'packageDetails/:id', component: PropertyDetailComponent },
+{ path: 'home', component: HomeComponent }, // Use HomeComponent for the home route
+{ path: 'user-register', component: UserRegisterComponent}, 
+{ path: 'user-account', component: AccountComponent},
+{ path: 'add-package', component: AddPackageComponent},
+{ path: 'book-package', component: BookPackageComponent},
+{ path: 'book-itinerary', component: BookItineraryComponent},
+{ path: 'add-itinerary', component: AddItineraryComponent}
+ ]
+/**
+ *  path: '',
+  component: HomeComponent,
+  children:[
+ { path: 'agent' , component : AgentComponent},
+ { path: 'agent-details/:id', component : AgentDetailsComponent},
+ { path: 'itinerary' , component : ItineraryComponent},
+ { path: 'packageList' , component : PackageComponent},
+ { path: 'packageDetails/:id', component: PropertyDetailComponent },
+ { path: 'home', component: HomeComponent }, // Use HomeComponent for the home route
+ { path: 'user-register', component: UserRegisterComponent},
+ { path: 'user-account', component: AccountComponent},
+ { path: 'add-package', component: AddPackageComponent},
+ { path: 'book-package', component: BookPackageComponent},
+ { path: 'book-itinerary', component: BookItineraryComponent},
+ { path: 'add-itinerary', component: AddItineraryComponent}
+ */
 
 
 
 
-
-
-];
 
 @NgModule({
   declarations: [
@@ -87,7 +106,8 @@ import { AddItineraryComponent } from './agent/add-itinerary/add-itinerary/add-i
     HttpClientModule, //Create Services to be consumed
     RouterModule.forRoot(appRoutes), //This will tell Angluar that routes exist in this application
     ReactiveFormsModule, //Adding reactive form module to be used
-    FormsModule //this is for templete driven forms
+    FormsModule, //this is for templete driven forms
+    TabsModule.forRoot() //this is installed to create tabs in the application
   ],
   providers: [
     provideClientHydration(),
@@ -95,7 +115,8 @@ import { AddItineraryComponent } from './agent/add-itinerary/add-itinerary/add-i
     Agent_dataService,
     UserServiceService,
     AlertifyService,
-    AuthService
+    AuthService,
+    MenuServiceService
   ],
   bootstrap: [AppComponent]
 })

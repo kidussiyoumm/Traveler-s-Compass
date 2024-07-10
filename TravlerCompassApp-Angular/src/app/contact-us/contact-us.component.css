@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.ftco-section {
+    padding: 4em 0;
+}
+
+.heading-section {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 1.5em;
+}
+
+.wrapper {
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.contact-wrap {
+    background: #fff;
+    padding: 4em;
+}
+
+.contact-wrap h3 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-bottom: 1em;
+}
+
+.form-control {
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #ddd;
+    margin-bottom: 1em;
+    border-radius: 0.25em;
+}
+
+.btn {
+    padding: 0.75em 1.5em;
+    border: none;
+    border-radius: 0.25em;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+.info-wrap {
+    color: #fff;
+    background: #007bff;
+    padding: 4em;
+}
+
+.info-wrap h3 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-bottom: 1em;
+}
+
+.dbox {
+    margin-bottom: 1em;
+}
+
+.dbox .icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 123, 255, 0.1);
+    color: #fff;
+    font-size: 1.5em;
+    margin-right: 1em;
+    border-radius: 50%;
+}
+
+.dbox .text {
+    margin-top: 0.5em;
+}
+
+.dbox .text p {
+    margin: 0;
+}
+
+.dbox .text p span {
+    font-weight: 600;
+}

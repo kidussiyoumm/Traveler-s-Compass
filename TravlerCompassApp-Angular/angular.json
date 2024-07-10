@@ -35,7 +35,8 @@
               "src/assets",
               "src/data",
               "src/Interface",
-              "src/model"
+              "src/model",
+              "src/services"
 
             ],
             "styles": [

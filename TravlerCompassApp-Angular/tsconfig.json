@@ -1,5 +1,6 @@
 {
-
+  
+  //"$schema": "./schemas/tsconfig-schema.json",
   "compileOnSave": false,
   "compilerOptions": {
 
@@ -22,13 +23,17 @@
     "useDefineForClassFields": false,
     "typeRoots": [
       "node_modules/@types",
-      "src/alertyfytype.d.ts" //we added this for notifcation adding it in src folder
+      "src/alertyfytype.d.ts", //we added this for notifcation adding it in src folder
+      "src/PathConstants"
     ],
     "lib": [
       "ES2022",
       "dom"
     ]
   },
+  "include": [
+    "src/**/*"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
