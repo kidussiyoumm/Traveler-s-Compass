@@ -3,37 +3,44 @@
   {
   "Id" : 1,
   "Tour":"Bali",
-  "description" : "2 Weeks trip in bali",
-  "Price": 4000
+  "Description" : "2 Weeks trip in bali",
+  "Price": 4000,
+  "Image": "bali.webp"
+
   },
   {
   "Id" : 2,
   "Tour":"Thaliland",
-  "description" : "1 Weeks trip in Thailand",
-  "Price": 4000
+  "Description" : "1 Weeks trip in Thailand",
+  "Price": 4000,
+  "Image": "Thailand.jpg"
   },
   {
     "Id" : 3,
     "Tour": "Turkey",
-    "description" : "5 days in Turkey",
-    "Price": 4000
+    "Description" : "5 days in Turkey",
+    "Price": 4000,
+    "Image": "Turkey.webp"
     },
     {
       "Id" : 4,
       "Tour":"Japan",
-      "description" : "2 Weeks trip in Japan",
-      "Price": 4000
+      "Description" : "2 Weeks trip in Japan",
+      "Price": 4000,
+      "Image": "Japan.jpeg"
       },
       {
         "Id" : 5,
         "Tour":"Zanzibar",
-        "description" : "2 Weeks trip in Zanzibar",
-        "Price": 4000
+        "Description" : "2 Weeks trip in Zanzibar",
+        "Price": 4000,
+        "Image": "Zanzibar.webp"
         },
         {
           "Id" : 6,
           "Tour":"Athens",
-          "description" : "9 days in Athens",
-          "Price": 4000
+          "Description" : "9 days in Athens",
+          "Price": 4000,
+          "Image": "Athenes.webp"
           }
   ]

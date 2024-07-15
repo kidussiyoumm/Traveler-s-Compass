@@ -5,8 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 //Angular uses routes to navigate through different componets in single page application
 import { FormsModule } from '@angular/forms';
-
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { PropertyBgListComponent } from './property/property-bg-list/property-bg-list/property-bg-list.component';
 import { PropertyPkCardComponent } from './property/property-pk-card/property-pk-card/property-pk-card.component';
@@ -17,13 +20,11 @@ import { ItineraryComponent } from './Itinerary/Itinerary.component';
 import { AgentComponent } from './agent/agent.component';
 import { ResumeComponent } from './resume/resume.component';
 import { HomeComponent } from './home/home.component';
-import { PackageComponent } from './package/package.component';
 import { Agent_dataService } from '../services/agentsServices/agent_data.service';
 import { PropertyDetailComponent } from './property/property-details/package-detail/property-detail.component';
 import { AgentDetailsComponent } from './agent/agent-details/agent-details/agent-details.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AccountComponent } from './account/account.component';
 import { AgentRegisterationComponent } from './agent/agent-registeration/agent-registeration.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
@@ -35,7 +36,7 @@ import { AddItineraryComponent } from './agent/add-itinerary/add-itinerary/add-i
 import { BookPackageComponent } from './Booking/book-package/book-package.component';
 import { BookItineraryComponent } from './Booking/book-itinerary/book-itinerary.component';
 import { MenuServiceService } from '../services/menuServices/menu-service.service';
-import { TabsModule } from 'ngx-bootstrap/tabs';
+
 
 
 //To define mapping in different components we create a const with an array
@@ -107,7 +108,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     RouterModule.forRoot(appRoutes), //This will tell Angluar that routes exist in this application
     ReactiveFormsModule, //Adding reactive form module to be used
     FormsModule, //this is for templete driven forms
-    TabsModule.forRoot() //this is installed to create tabs in the application
+    TabsModule.forRoot(), //this is installed to create tabs in the application
+    ButtonsModule.forRoot() //this is installed to create buttons in the application
   ],
   providers: [
     provideClientHydration(),

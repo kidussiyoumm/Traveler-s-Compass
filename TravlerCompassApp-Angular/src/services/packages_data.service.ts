@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators'; //map operators allows passing data to a function and returning a new data as a observable and to be subscribed to
 import { Observable } from 'rxjs';
 import { IPackage } from '../Interfaces/IPackage.interface';
-
+import { Modelpackage } from '../model/modelPackage';
 @Injectable({//Services are using Injectable decorator
   providedIn: 'root' //provide this in app.root(app.modules) level/we are injecting this serivces in the root
 })//This services class will share the package data throughout components
@@ -26,5 +26,9 @@ getAllPackages(): Observable<IPackage[]> {
   );
  }
 
-}
 
+
+ addPackage(packages : Modelpackage){
+  localStorage.setItem('newPackage', JSON.stringify(packages));
+}
+}

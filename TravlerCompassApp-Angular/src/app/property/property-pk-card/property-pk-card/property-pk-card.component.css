@@ -17,6 +17,12 @@
   opacity: 0.8; /**This will whiten the cards**/
 }
 
+.card-body{
+  font-family: fantasy;
+  color:cornflowerblue
+
+}
+
 .card img{
   transform: scale(0.9,1);
   transition-duration:500ms;
@@ -40,10 +46,24 @@
 }
 
 .card-img-wrapper:hover .list-style {/**this will raise the button when its hovered on it**/
-  bottom: 0;
+  bottom: 80px;
   opacity: 1;
 }
 
 .animate{ /**this will give the pop up effect on the list-styles butttons**/
-  transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out; 
+}
+
+.small-card {
+  width: 350px;
+  margin: 0px auto;
+} 
+
+/* Add styles for the tour-info class */
+.tour-info {
+  font-family: 'Arial', sans-serif; /* Change font family */
+  font-size: 1.2rem; /* Adjust font size */
+  color: rgb(76, 76, 237); /* Change text color */
+  text-align: center; /* Center align the text */
+  margin-top: 10px;
 }

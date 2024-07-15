@@ -1,0 +1,49 @@
+/* add-package.component.css */
+
+.my-container {
+  padding-top: 60px; /* Padding from the top */
+}
+
+.tab-panel {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  min-height: 400px;
+  background-color: white;
+
+}
+.card {
+  margin-bottom: 60px; /* Spacing between cards */
+}
+
+.card-header {
+  padding: 1rem; /* Padding for the header */
+  border-bottom: 1px solid #ddd; /* Bottom border for the header */
+  background-color: #c0f3fa; /* Very light blue background color */
+  color: #000; /* Text color */
+}
+
+.card-body {
+  padding: 1.5rem; /* Padding for the body */
+
+}
+
+.btn-block {
+  margin-top: 10px; /* Margin between buttons */
+}
+
+.shadow-sm {
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075); /* Add shadow to cards */
+}
+
+.form-group {
+  margin-bottom: 1rem; /* Space between form groups */
+}
+
+.mt-4 {
+  margin-top: 1.5rem; /* Margin for top spacing */
+}
+
+.mr-2 {
+  margin-right: 0.5rem !important;
+}

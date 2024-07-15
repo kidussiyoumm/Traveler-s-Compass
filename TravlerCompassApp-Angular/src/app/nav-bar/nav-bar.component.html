@@ -1,8 +1,8 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/home">Travel Compass</a><!--The router link sends you to the right page-->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -10,10 +10,10 @@
 
         <li class="nav-item" *ngFor="let menu of filteredMenu">
           <a class="nav-link" [routerLink]="menu.path" routerLinkActive="active">{{ menu.text }}</a>
-        </li> 
+        </li>
 
-        
-         <li class="nav-item"> 
+
+        <li class="nav-item">
           <!--Having the active inside the class is a bootstrap class to make it stand out-->
           <a class="nav-link active" routerLink="/resume">RESUME</a>
         </li>
@@ -22,7 +22,8 @@
 
         <ul class="navbar-nav me-5">
           <li class="nav-item dropdown me-5">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
               Settings
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -47,24 +48,24 @@
               -->
             </ul>
           </li>
+        </ul>
 
-
-
-
-
-        <form class="d-flex me-5" role="login"> <!--using string interpolation-->
-
-            <div class="welcome-message input me-2" *ngIf="loggedIn()"> Welcome </div>
-
-        <!--There a bootstrab class routerLinkActive that will give it a brighter look when the mouse hovers over it-->
-        <button *ngIf="!loggedIn()" class="btn btn-outline-success me-2" routerLink="/user-register"  >Register</button>
-        <button *ngIf="!loggedIn()" class="btn btn-outline-success" routerLink="/user-login" routerLinkActive="active" >Login</button>
-        <button *ngIf="loggedIn()" (click)="logOut()" class="btn btn-outline-success" routerLink="/home" routerLinkActive="active" >Logout</button>
-        <!--This will check if you're logged in or logout from the control-->
-
-      </form>
-      </ul>
-    </div>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item d-flex align-items-center">
+            <div class="welcome-message input " *ngIf="loggedIn()">Welcome</div>
+          </li>
+          <li class="nav-item" *ngIf="!loggedIn()">
+            <button class="btn btn-outline-success me-2" routerLink="/user-register">Register</button>
+          </li>
+          <li class="nav-item" *ngIf="!loggedIn()">
+            <button class="btn btn-outline-success" routerLink="/user-login" routerLinkActive="active">Login</button>
+          </li>
+          <li class="nav-item" *ngIf="loggedIn()">
+            <button class="btn btn-outline-success" (click)="logOut()" routerLink="/home"
+              routerLinkActive="active">Logout</button>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

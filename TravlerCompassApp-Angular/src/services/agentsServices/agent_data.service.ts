@@ -42,4 +42,9 @@ getAllAgents(): Observable<IAgent[]> {
        localStorage.setItem('Agents' ,JSON.stringify(agentsArray)); //this is a key : value pair // the key is to store multipe agents
   }                               //this.user is returning an json object so we have to use the Json.strringf method to chage it to a string
 
+
+
+  
+  
+
 }

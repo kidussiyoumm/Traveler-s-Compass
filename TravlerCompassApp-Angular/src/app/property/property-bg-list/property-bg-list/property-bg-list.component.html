@@ -1,6 +1,6 @@
 <div class="row"> <!-- this will give it a rows structure-->
   <!--the ngFor will loop through the package array as property_pk_names-->
-<div *ngFor="let property_pk_names of packages" class="shadow-lg col-sm-4 p-1"> <!-- shadow make the bg darker with lg meaning length-->
+<div *ngFor="let property_pk_names of packages" class="shadow-sm col-sm-4 "> <!-- shadow make the bg darker with lg meaning length-->
     <!--using property binding we pass the packages(componet elements) to html using the @Input-->
 <app-property-pk-card [property_pk] = "property_pk_names"></app-property-pk-card>
 </div>

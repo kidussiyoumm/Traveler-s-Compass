@@ -1,0 +1,73 @@
+<div class="container my-container">
+  <div class="row mb-5">
+    <div class="col-8">
+      <div class="card shadow-lg p-0 bg-white">
+        <div class="card-header bg-primary text-white">
+          <h3>Add A Package</h3>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()" [formGroup]="addPackageForm">
+            <div class="tab-panel">
+              <tabset class="member-tabset" #formTabs>
+                <tab heading="Basic Info" formGroupName="BasicInfo">
+                  <div class="form-group col-12">
+                    <label>Title</label> 
+                    <input type="text" class="form-control" formControlName="Tour" required minlength="5"
+                           [(ngModel)]="packageView.Tour">
+                    <div class="error-block" *ngIf="BasicInfo.controls['Tour'].invalid && (NextClicked || BasicInfo.controls['Tour'].touched)">
+                      Please enter a Title for your Tour.
+                    </div>
+                  </div>
+
+                  <div class="form-group col-12">
+                    <label>Description</label>
+                    <input type="text" class="form-control" formControlName="Description" required minlength="5"
+                           [(ngModel)]="packageView.Description">
+                    <div class="error-block" *ngIf="BasicInfo.controls['Description'].invalid && (NextClicked || BasicInfo.controls['Description'].touched)">
+                      Please enter a Description for your Tour.
+                    </div>
+                  </div>
+
+                  <div class="form-group col-12">
+                    <button type="button" class="btn btn-primary btn-block" (click)="selectTab(1, BasicInfo.valid && BasicInfo.controls['Tour'].valid && BasicInfo.controls['Description'].valid)">Next</button>
+                  </div>
+                </tab>
+
+                <tab heading="Pricing" formGroupName="PriceInfo">
+                  <div class="form-group col-12">
+                    <label>Price (in USD)</label>
+                    <input type="text" class="form-control" formControlName="Price"
+                           [(ngModel)]="packageView.Price">
+                    <div class="error-block" *ngIf="PriceInfo.controls['Price'].invalid && PriceInfo.controls['Price'].touched">
+                      Please enter a price in USD$ Currency.
+                    </div>
+                  </div>
+
+                  <div class="form-group col-12">
+                    <button type="button" class="btn btn-secondary btn-block" (click)="selectTab(0, PriceInfo.valid)">Back</button>
+                  </div>
+                </tab>
+              </tabset>
+
+              <div class="form-group col-12 mt-4">
+                <button type="submit" class="btn btn-success btn-block p-2 mr-2">Submit</button>
+                <button type="reset" class="btn btn-success btn-block p-2">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h3>Your Package Preview</h3>
+        </div>
+        <div class="card-body shadow-lg p-3 bg-white">
+          <app-property-pk-card [property_pk]="packageView"></app-property-pk-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

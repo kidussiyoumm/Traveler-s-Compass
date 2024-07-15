@@ -1,21 +1,31 @@
- <div class="card"> <!-- this will give it a card look-->
-   <div class= "card-img-wrapper">
-   <img class="propImg" src="assets/images/bali.webp" alt="Property Image"> <!-- Added alt attribute -->
-      <div class="card-body p-2"><!-- p stands for padding-->
-        <ul class="list-inline text-center list-style animate"> <!--unordered list, the text-center aligns it to the center-->
+<div class="justify-content-center">
+
+  <div class="card small-card "> <!-- this will give it a card look-->
+    <div class="card-img-wrapper">
+      <img class="propImg" [src]="'assets/images/' + property_pk.Image" alt="Property Image">
+      <!-- Binding to the Image property -->
+      <div class="card-body"><!-- p stands for padding-->
+        <ul class="list-inline text-center list-style animate">
+          <!--unordered list, the text-center aligns it to the center-->
           <li class="list-inline-item"><!--This will remove the bullet points-->
             <!--Bootstrap class btn then btn-priamry for the color-->
-            <button class = "btn btn-primary" routerLink="/packageDetails/{{property_pk.Id}}"><i class="fa-solid fa-plane"></i></button>
+            <button class="btn btn-primary" routerLink="/packageDetails/{{property_pk.Id}}"><i
+                class="fa-solid fa-plane"></i></button>
             <!--we passed the font awesome icon here-->
           </li>
           <li class="list-inline-item">
-            <button class = "btn btn-primary" routerLink="/agent-details"><i class="fa-regular fa-address-book"></i></button>
+            <button class="btn btn-primary" routerLink="/agent-details"><i
+                class="fa-regular fa-address-book"></i></button>
           </li>
         </ul>
 
+        <div class="tour-info"> <!-- added class here -->
+          <!--We are geeting this from packages array in parent class-->
+         <br> {{property_pk.Tour}}
+
         </div>
-        <!--We are geeting this from packages array in parent class-->
-        {{property_pk.Tour}}
         {{property_pk.Price}}
+        <br>
+        {{property_pk.Description}}
       </div>
-</div>
+    </div>
