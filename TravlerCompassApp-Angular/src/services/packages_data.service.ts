@@ -16,6 +16,18 @@ getAllPackages(): Observable<IPackage[]> {
   return this.http.get<{ [key: string]: IPackage }>('data/packages.json').pipe(//This line makes an HTTP GET request to the URL src/data/packages.json.
     map(data => { //The map operator transforms the data received from the HTTP GET request.
       const packagesArray: IPackage[] = []; //An empty array packagesArray of type IPackage[] is initialized.
+      // Retrieve local packages from localStorage
+      const localPackagesString = localStorage.getItem('newPackage');
+      if (localPackagesString) {
+        const localPackages: Modelpackage[] = JSON.parse(localPackagesString);
+        for (const pkg of localPackages) {
+          packagesArray.push(pkg);
+        }
+      }
+       
+     
+     
+     
       for (const id in data) { //The code iterates over each key (id) in the data object.
         if (data.hasOwnProperty(id)) {
            packagesArray.push(data[id]); //If the data object has the property (id), it pushes the value (data[id]), which is of type IPackage, into the packagesArray.
@@ -27,8 +39,21 @@ getAllPackages(): Observable<IPackage[]> {
  }
 
 
+//Adding a new package to storage with newPacakge key
+ addPackage(newPackage : Modelpackage){ 
+  const packages = localStorage.getItem('newPackage');
+    let packagesArray: Modelpackage[] = packages ? JSON.parse(packages) : [];
+    newPackage.Id = this.newPacakgeID(); // Assign a unique ID to the new package
+    packagesArray.push(newPackage);
+    localStorage.setItem('newPackage', JSON.stringify(packagesArray));}
 
- addPackage(packages : Modelpackage){
-  localStorage.setItem('newPackage', JSON.stringify(packages));
-}
-}
+
+ newPacakgeID(): number{
+  const pid = localStorage.getItem('PID');
+    const newID = pid ? +pid + 1 : 101;
+    localStorage.setItem('PID', String(newID));
+    return newID;
+  }
+
+ }
+

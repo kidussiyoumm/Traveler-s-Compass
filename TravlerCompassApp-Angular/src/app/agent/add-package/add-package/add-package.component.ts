@@ -93,7 +93,7 @@ export class AddPackageComponent implements OnInit {
        // If the package was successfully added, navigate to the home page
     const packageAddedSuccessfully = true; // Set this based on your logic or response from service
     if (packageAddedSuccessfully) {
-      this.router.navigate(['/']);
+      this.router.navigate(['home']);
     }
     } else {
       this.alertif.error("Please review the form and enter valid entries.");

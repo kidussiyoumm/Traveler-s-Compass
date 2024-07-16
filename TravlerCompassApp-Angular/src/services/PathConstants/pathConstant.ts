@@ -7,7 +7,7 @@ export const PathConstant = {
     {
         path:'agents',
         text: 'Agent',
-        roles: ['Agent']
+        roles: ['Agent', 'User']
     },
      {
        path:'add-package',
