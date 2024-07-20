@@ -30,14 +30,7 @@ export class AddPackageComponent implements OnInit {
   titleName: Array<string> = ['Thailand', 'Athens']; // Array of title names
 
   // Two-way binding setup for packageView object
- // packageView: IPackage = {
- //   Id: 0,
- //   Tour: '',
- //   Price: null,
- //   Description: null,
-  //  Title: '',
-//Image: ''
- // };
+
 
   constructor(
     private router: Router, // Injected Router service
@@ -59,7 +52,10 @@ export class AddPackageComponent implements OnInit {
       }),
       PriceInfo: this.fb.group({
         Price: [null, Validators.required] // Form control for Price with validation
-      })
+      }),
+      OtherInfo: this.fb.group({
+        photo: [null, Validators.required]
+        })
     });
   }
 
@@ -71,6 +67,10 @@ export class AddPackageComponent implements OnInit {
   // Getter method for accessing PriceInfo FormGroup within addPackageForm
   get PriceInfo() {
     return this.addPackageForm.controls['PriceInfo'] as FormGroup; // Using square bracket notation to access PriceInfo FormGroup
+  }
+
+  get OtherInfo() {
+    return this.addPackageForm.controls['OtherInfo'] as FormGroup;
   }
 
   // Method to navigate back to a previous route (example implementation)
@@ -125,6 +125,11 @@ export class AddPackageComponent implements OnInit {
         this.formTabs.tabs[1].active = true; // Activate the second tab if PriceInfo is invalid
         return false; // Exit the function early if invalid
       } 
+
+      if (this.OtherInfo.invalid) {
+        this.formTabs.tabs[2].active = true;
+        return false;
+      }
 
       return true;
   }

@@ -36,6 +36,9 @@ import { AddItineraryComponent } from './agent/add-itinerary/add-itinerary/add-i
 import { BookPackageComponent } from './Booking/book-package/book-package.component';
 import { BookItineraryComponent } from './Booking/book-itinerary/book-itinerary.component';
 import { MenuServiceService } from '../services/menuServices/menu-service.service';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -100,7 +103,7 @@ import { MenuServiceService } from '../services/menuServices/menu-service.servic
     AddPackageComponent,
     AddItineraryComponent
 
-   ],
+   ], 
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -109,7 +112,12 @@ import { MenuServiceService } from '../services/menuServices/menu-service.servic
     ReactiveFormsModule, //Adding reactive form module to be used
     FormsModule, //this is for templete driven forms
     TabsModule.forRoot(), //this is installed to create tabs in the application
-    ButtonsModule.forRoot() //this is installed to create buttons in the application
+    ButtonsModule.forRoot(), //this is installed to create buttons in the application
+    NgxGalleryModule, //For the gallary
+    BrowserAnimationsModule,
+    //NgxLightboxModule
+  
+  
   ],
   providers: [
     provideClientHydration(),

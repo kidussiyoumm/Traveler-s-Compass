@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'; //Services are using Injectable decorator
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators'; //map operators allows passing data to a function and returning a new data as a observable and to be subscribed to
-import { Observable } from 'rxjs';
+import { map, catchError  } from 'rxjs/operators'; //map operators allows passing data to a function and returning a new data as a observable and to be subscribed to
+import { Observable, of } from 'rxjs';
 import { IPackage } from '../Interfaces/IPackage.interface';
 import { Modelpackage } from '../model/modelPackage';
 @Injectable({//Services are using Injectable decorator
@@ -11,32 +11,30 @@ export class Packages_dataService {
 
  //we add/inject it our constructors componet
  constructor(private http:HttpClient) {}
-//The getAllPackages method fetches all packages from a JSON file and returns an observable of an array of IPackage objects.
+
+
+ //The getAllPackages method fetches all packages from a JSON file and returns an observable of an array of IPackage objects.
 getAllPackages(): Observable<IPackage[]> {
-  return this.http.get<{ [key: string]: IPackage }>('data/packages.json').pipe(//This line makes an HTTP GET request to the URL src/data/packages.json.
+  return this.http.get<Modelpackage[]>('data/packages.json').pipe(//This line makes an HTTP GET request to the URL src/data/packages.json.
     map(data => { //The map operator transforms the data received from the HTTP GET request.
-      const packagesArray: IPackage[] = []; //An empty array packagesArray of type IPackage[] is initialized.
+      let packagesArray: Modelpackage[] = data || []; //An empty array packagesArray of type IPackage[] is initialized.
+     
+     
       // Retrieve local packages from localStorage
       const localPackagesString = localStorage.getItem('newPackage');
       if (localPackagesString) {
         const localPackages: Modelpackage[] = JSON.parse(localPackagesString);
-        for (const pkg of localPackages) {
-          packagesArray.push(pkg);
-        }
+        packagesArray = [...packagesArray, ...localPackages]; // Merge arrays using spread operator
       }
-       
-     
-     
-     
-      for (const id in data) { //The code iterates over each key (id) in the data object.
-        if (data.hasOwnProperty(id)) {
-           packagesArray.push(data[id]); //If the data object has the property (id), it pushes the value (data[id]), which is of type IPackage, into the packagesArray.
-        }
-      }
-      return packagesArray;//returing/sending an observale
-  })
-  );
- }
+
+        return packagesArray;
+      }),
+      catchError(error => {
+        console.error('Error fetching packages:', error);
+        return of([]); // Return empty array if there's an error
+      })
+    );
+  } 
 
 
 //Adding a new package to storage with newPacakge key
@@ -48,11 +46,19 @@ getAllPackages(): Observable<IPackage[]> {
     localStorage.setItem('newPackage', JSON.stringify(packagesArray));}
 
 
- newPacakgeID(): number{
+ newPacakgeID(): number{   
   const pid = localStorage.getItem('PID');
     const newID = pid ? +pid + 1 : 101;
     localStorage.setItem('PID', String(newID));
     return newID;
+  }
+
+  getPackage(id: number): Observable<Modelpackage | undefined> {//to find the id from packages 
+     return this.getAllPackages().pipe( //pipe method hels to manuplicate the response
+     map(packagesArray => {
+      return packagesArray.find( p => p.Id === id)
+     })
+     );
   }
 
  }

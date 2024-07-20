@@ -46,10 +46,29 @@
                   <div class="form-group col-12">
                     <button type="button" class="btn btn-secondary btn-block" (click)="selectTab(0, PriceInfo.valid)">Back</button>
                   </div>
+                </tab> 
+              
+
+                
+                <tab heading="Photos">
+                  <div class="form-group col-12">
+                    <div class="photo-control">
+                        <button class="mt-5" type="button">Upload</button> <br>
+                        This is under construction
+                    </div>
+                  </div>
                 </tab>
-              </tabset>
+
+              </tabset> 
+
+
+
+                 
+              
 
               <div class="form-group col-12 mt-4">
+                <button type="button" class="btn btn-primary btn-block"
+                (click)="selectTab(3, true)">Back</button>
                 <button type="submit" class="btn btn-success btn-block p-2 mr-2">Submit</button>
                 <button type="reset" class="btn btn-success btn-block p-2">Cancel</button>
               </div>
