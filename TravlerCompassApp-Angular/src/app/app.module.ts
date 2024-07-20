@@ -9,6 +9,11 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { FiltersPipe } from './Pipes/filters.pipe';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SortPipe } from './Pipes/sort.pipe';
+
 
 import { AppComponent } from './app.component';
 import { PropertyBgListComponent } from './property/property-bg-list/property-bg-list/property-bg-list.component';
@@ -36,8 +41,7 @@ import { AddItineraryComponent } from './agent/add-itinerary/add-itinerary/add-i
 import { BookPackageComponent } from './Booking/book-package/book-package.component';
 import { BookItineraryComponent } from './Booking/book-itinerary/book-itinerary.component';
 import { MenuServiceService } from '../services/menuServices/menu-service.service';
-import { NgxGalleryModule } from '@kolkov/ngx-gallery';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -91,7 +95,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BackgroundComponent,
     ItineraryComponent,
     AgentComponent,
-    ResumeComponent,
+    ResumeComponent, 
     HomeComponent,
     PropertyDetailComponent,
     AgentDetailsComponent,
@@ -101,7 +105,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AgentRegisterationComponent,
     ContactUsComponent,
     AddPackageComponent,
-    AddItineraryComponent
+    AddItineraryComponent,
+    FiltersPipe,
+    SortPipe //Custom filter used to search bar using angular pipe
 
    ], 
   imports: [
@@ -115,7 +121,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ButtonsModule.forRoot(), //this is installed to create buttons in the application
     NgxGalleryModule, //For the gallary
     BrowserAnimationsModule,
-    //NgxLightboxModule
+ 
   
   
   ],

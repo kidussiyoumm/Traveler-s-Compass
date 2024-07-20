@@ -17,6 +17,12 @@ export class PropertyBgListComponent implements OnInit {
 
  packages: IPackage[] = [];
  agents: IAgent[] =[];
+ Tour: string = ''; // Variable to hold the filter input
+ TourSearch = ''; //component fetches the packages and uses the Tour variable for filtering
+ SortbyParam = '';
+ SortDirection = 'asc'; //To change to asc order
+
+
 
 //we inject that services to fetch all out package data
   constructor(private packages_data: Packages_dataService,
@@ -49,6 +55,26 @@ export class PropertyBgListComponent implements OnInit {
          console.log(error);
         }//third call back is for completion
       );
+    }
+
+
+
+    onTourFilter(){
+      this.TourSearch = this.Tour; //Two way data binding 
+
+    }
+
+    Clear(){
+      this.Tour = '';
+      this.TourSearch = '';
+    }
+
+    onSortDirection(){
+      if(this.SortDirection === 'desc'){
+        this.SortDirection = 'asc';
+      } else{
+        this.SortDirection = 'desc';
+      }
     }
 }
     
