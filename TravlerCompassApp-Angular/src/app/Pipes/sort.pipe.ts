@@ -15,7 +15,8 @@ export class SortPipe implements PipeTransform {
 
 
      // If the sort direction is 'desc', set the multiplier to -1 for descending order
-    if(sortDirection === 'desc'){
+    if(value){
+     if(sortDirection === 'desc'){
       multiplier = -1;
     }
 
@@ -37,5 +38,6 @@ export class SortPipe implements PipeTransform {
     // Return the sorted array
     return value;
   }
+}
 
 }

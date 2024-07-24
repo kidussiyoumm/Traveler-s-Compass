@@ -13,6 +13,13 @@ export class Packages_dataService {
  constructor(private http:HttpClient) {}
 
 
+
+getAllPackagesAPI(): Observable<string[]> {
+  return this.http.get<string[]>('https://localhost:44376/Package/api/package/GetAllPackageAsync');//this method is getting the array as string array 
+}
+
+
+
  //The getAllPackages method fetches all packages from a JSON file and returns an observable of an array of IPackage objects.
 getAllPackages(): Observable<IPackage[]> {
   return this.http.get<Modelpackage[]>('data/packages.json').pipe(//This line makes an HTTP GET request to the URL src/data/packages.json.

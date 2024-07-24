@@ -52,7 +52,9 @@
 
         <ul class="navbar-nav me-auto">
           <li class="nav-item d-flex align-items-center">
-            <div class="welcome-message input " *ngIf="loggedIn()">Welcome</div>
+            <div class="welcome-message" *ngIf="loggedIn()">
+              Welcome {{ firstName }}
+            </div>
           </li>
           <li class="nav-item" *ngIf="!loggedIn()">
             <button class="btn btn-outline-success me-2" routerLink="/user-register">Register</button>
@@ -61,10 +63,10 @@
             <button class="btn btn-outline-success" routerLink="/user-login" routerLinkActive="active">Login</button>
           </li>
           <li class="nav-item" *ngIf="loggedIn()">
-            <button class="btn btn-outline-success" (click)="logOut()" routerLink="/home"
-              routerLinkActive="active">Logout</button>
+            <button class="btn btn-outline-success" (click)="logOut()" routerLink="/home" routerLinkActive="active">Logout</button>
           </li>
         </ul>
+        
       </div>
     </div>
   </div>

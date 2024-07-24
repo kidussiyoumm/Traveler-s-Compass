@@ -12065,19 +12065,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kidus\\.nuget\\packages\\": {}
+    "C:\\Users\\User Name\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kidus\\Desktop\\Traveler-s-Compass\\Traveler Compass\\Traveler Compass\\Traveler Compass.csproj",
+      "projectUniqueName": "C:\\Users\\User Name\\Desktop\\Traveler-s-Compass\\Traveler Compass\\Traveler Compass\\Traveler Compass.csproj",
       "projectName": "Traveler Compass",
-      "projectPath": "C:\\Users\\Kidus\\Desktop\\Traveler-s-Compass\\Traveler Compass\\Traveler Compass\\Traveler Compass.csproj",
-      "packagesPath": "C:\\Users\\Kidus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kidus\\Desktop\\Traveler-s-Compass\\Traveler Compass\\Traveler Compass\\obj\\",
+      "projectPath": "C:\\Users\\User Name\\Desktop\\Traveler-s-Compass\\Traveler Compass\\Traveler Compass\\Traveler Compass.csproj",
+      "packagesPath": "C:\\Users\\User Name\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User Name\\Desktop\\Traveler-s-Compass\\Traveler Compass\\Traveler Compass\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Kidus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User Name\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12085,8 +12085,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\Entity Framework Tools\\NuGet Packages": {},
-        "C:\\Program Files\\dotnet\\library-packs": {}
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
@@ -12171,16 +12171,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error occurred while getting package vulnerability data: Object reference not set to an instance of an object."
-    }
-  ]
+  }
 }

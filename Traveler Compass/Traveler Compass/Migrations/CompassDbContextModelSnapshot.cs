@@ -138,7 +138,7 @@ namespace Traveler_Compass.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("userId")
+                    b.Property<int?>("userId")
                         .HasColumnType("int");
 
                     b.HasKey("packageId");
@@ -224,9 +224,7 @@ namespace Traveler_Compass.Migrations
 
                     b.HasOne("Traveler_Compass.Models.Domain.User", "user")
                         .WithMany("packages")
-                        .HasForeignKey("userId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("userId");
 
                     b.Navigation("agent");
 

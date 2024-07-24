@@ -34,7 +34,7 @@ export class UserLoginComponent implements OnInit {
 
 
   initializeMenu(): void {
-    debugger;
+  
     const storedRole = localStorage.getItem('role'); // Retrieve the role from localStorage
     this.menus = PathConstant.menus;
     const userData = localStorage.getItem('token');
@@ -72,28 +72,27 @@ export class UserLoginComponent implements OnInit {
 
   onLogin(loginForm: NgForm): void {
     if (loginForm.valid) { //we pass the authenticate by passing the loginForms value
-      console.log('Form Value:', loginForm.value); //This will log the form values
       const email = loginForm.value.email;//this will get the email
       const password = loginForm.value.password;//this will grt the password form form
       const token = this.authService.authUser({ email, password });//we will use Auth services to authenticate the user and password from the local storage
       // Handle the login logic here
-
-
+    
       if (token) {//token.userName
         localStorage.setItem('token', JSON.stringify(token));
-        localStorage.setItem('role', token.role); 
-        console.log('Login Successful');
+        localStorage.setItem('role', token.role);
+        localStorage.setItem('firstName', token.firstName); // Store the username 
+       
         this.alertifyNotification.success("successfully logged in");
         this.initializeMenu(); // Update the menu after successful login
         this.router.navigate(['/home']);
         // Optionally, redirect the user or update the UI
       } else {
-        console.log('Login not Successful');
+       
         this.alertifyNotification.error("Email or password missmacth. Try again");
         // Optionally, display an error message to the user
       }
     } else {
-      console.log('Form is invalid'); //this will
+     
       this.alertifyNotification.warning("Error while trying to login");
     }
   }

@@ -2,6 +2,7 @@
 using Azure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 using Traveler_Compass.Models.Domain;
 using Traveler_Compass.Models.DTO.PacakgeDto;
@@ -16,13 +17,16 @@ namespace Traveler_Compass.Controllers
     public class PackageController : ControllerBase
     {
         private readonly IPackageRepository _packageRepository;
+        private readonly IAgentRepository _agentRespostory;
         private readonly IMapper _mapper;
         public PackageController(IPackageRepository _packageRepository,
+                                 IAgentRepository _agentRespostory,
                                   IMapper _mapper)
         { //Any connection to the data base should be through the repository not directly to the Data base
 
 
             this._packageRepository = _packageRepository;
+            this._agentRespostory = _agentRespostory;
             this._mapper = _mapper; 
 
         }
@@ -75,18 +79,30 @@ namespace Traveler_Compass.Controllers
 
         [HttpPost]
         [Route("api/package/CreatePackageAsync")]
-        [Authorize(Roles = "Admin")]
+     // [Authorize(Roles = "Admin")]
         public async Task<ActionResult<PackageDTO>> CreatePackageAsync([FromBody] CreatePackageDTO packageDto)
         {
             try
             {
+                // Validate if the AgentId exists
+                var agentExists = await _agentRespostory.GetAgentIdAsync(packageDto.AgentId);
+                if (agentExists == null)
+                {
+                    return BadRequest("Invalid AgentId.");
+                }
+
                 var ClientData =  _mapper.Map<Package>(packageDto);
-                var databaseCheck = await _packageRepository.CreatePackageAsync(ClientData);
-                var response = _mapper.Map<PackageDTO>(databaseCheck);
+                // Set UserId to null or default if not applicable
+                ClientData.userId = null;
+                var createdPackage = await _packageRepository.CreatePackageAsync(ClientData);
+                var response = _mapper.Map<PackageDTO>(createdPackage);
                
                 return Ok(response);
+
+
             }catch(Exception ex) {
                 Console.WriteLine(ex.Message);
+                return StatusCode(500, "Internal server error");
                 throw;
             }
                      

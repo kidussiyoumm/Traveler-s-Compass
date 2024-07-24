@@ -7,3 +7,12 @@ export interface IAgent{
   mobile: number;
 
 }
+
+export interface IAgentLogin{
+
+  email: string;
+  password: string;
+  token: string;
+
+
+}

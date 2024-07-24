@@ -64,24 +64,6 @@ import { MenuServiceService } from '../services/menuServices/menu-service.servic
 { path: 'book-itinerary', component: BookItineraryComponent},
 { path: 'add-itinerary', component: AddItineraryComponent}
  ]
-/**
- *  path: '',
-  component: HomeComponent,
-  children:[
- { path: 'agent' , component : AgentComponent},
- { path: 'agent-details/:id', component : AgentDetailsComponent},
- { path: 'itinerary' , component : ItineraryComponent},
- { path: 'packageList' , component : PackageComponent},
- { path: 'packageDetails/:id', component: PropertyDetailComponent },
- { path: 'home', component: HomeComponent }, // Use HomeComponent for the home route
- { path: 'user-register', component: UserRegisterComponent},
- { path: 'user-account', component: AccountComponent},
- { path: 'add-package', component: AddPackageComponent},
- { path: 'book-package', component: BookPackageComponent},
- { path: 'book-itinerary', component: BookItineraryComponent},
- { path: 'add-itinerary', component: AddItineraryComponent}
- */
-
 
 
 

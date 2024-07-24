@@ -1,0 +1,592 @@
+[
+  {
+    "ContainingType": "Traveler_Compass.Controllers.AgentController",
+    "Method": "GetAgentFullName",
+    "RelativePath": "Agent/api/Agent/{agentFristName}/{agentetLastName}/GetAgentFullName",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentFirstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "agentLastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "agentFristName",
+        "Type": "",
+        "IsRequired": true
+      },
+      {
+        "Name": "agentetLastName",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.AgentController",
+    "Method": "DeleteAgent",
+    "RelativePath": "Agent/api/Agent/{agentId}/DeleteAgent",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.AgentController",
+    "Method": "UpdateAgentUsingId",
+    "RelativePath": "Agent/api/Agent/{agentId}/UpdateAgentUsingId",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "agentDTO",
+        "Type": "Traveler_Compass.Models.DTO.Agent.AgentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.AgentController",
+    "Method": "GetAgentById",
+    "RelativePath": "Agent/api/Agent/{agentId}GetAgentById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Traveler_Compass.Models.DTO.Agent.AgentDTO",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.AgentController",
+    "Method": "CreateAgentAsync",
+    "RelativePath": "Agent/api/Agent/CreateAgentAsync",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AgentDto",
+        "Type": "Traveler_Compass.Models.DTO.AgentDto.CreateAgentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.AgentController",
+    "Method": "GetAllAgents",
+    "RelativePath": "Agent/api/Agent/GetAllAgents",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Traveler_Compass.Models.DTO.Agent.AgentDTO, Traveler Compass, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.AccountController",
+    "Method": "Login",
+    "RelativePath": "api/Account/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginReq",
+        "Type": "Traveler_Compass.Models.DTO.LoginDto.LoginReqDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.ItineraryController",
+    "Method": "DeleteItineraryAsync",
+    "RelativePath": "api/Itinerary/{itineraryId}/DeleteItinerary",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itineraryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Traveler_Compass.Models.Domain.Itinerary",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.ItineraryController",
+    "Method": "GetItineraryByIdAsync",
+    "RelativePath": "api/Itinerary/{itineraryId}/GetItineraryByIdAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itineraryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Traveler_Compass.Models.DTO.ItineraryDto.ItineraryDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.ItineraryController",
+    "Method": "UpdateItineraryAsync",
+    "RelativePath": "api/Itinerary/{itineraryId}/UpdateItineraries",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itineraryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "itineraryDTO",
+        "Type": "Traveler_Compass.Models.DTO.ItineraryDto.ItineraryDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.ItineraryController",
+    "Method": "UpdateItineraryByIdAsync",
+    "RelativePath": "api/Itinerary/{itineraryId}/UpdateItineraryById",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itineraryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "itineraryDto",
+        "Type": "Traveler_Compass.Models.DTO.ItineraryDto.ItineraryDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Traveler_Compass.Models.DTO.ItineraryDto.ItineraryDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.ItineraryController",
+    "Method": "GetItineraryByNameAsync",
+    "RelativePath": "api/Itinerary/{itineraryName}/GetItineraryByNameAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itineraryName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Traveler_Compass.Models.DTO.ItineraryDto.ItineraryDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.ItineraryController",
+    "Method": "GetAllItineraryAsync",
+    "RelativePath": "api/Itinerary/GetAllItineraryAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Traveler_Compass.Models.DTO.ItineraryDto.ItineraryDTO, Traveler Compass, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.RegisterController",
+    "Method": "RegisterAgent",
+    "RelativePath": "api/Register/register-agent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentDto",
+        "Type": "Traveler_Compass.Models.DTO.Agent.AgentDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.RegisterController",
+    "Method": "RegisterUser",
+    "RelativePath": "api/Register/register-user",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userDto",
+        "Type": "Traveler_Compass.Models.DTO.UserDto.UserDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "isAgent",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.PackageController",
+    "Method": "DeletepackageByIdAsync",
+    "RelativePath": "Package/api/package/{packageId}/DeletepackageByIdAsync",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "packageId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.PackageController",
+    "Method": "GetPackageByIdAsync",
+    "RelativePath": "Package/api/package/{packageId}/GetPackageByIdAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "packageId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.PackageController",
+    "Method": "GetPackageByTitleAsync",
+    "RelativePath": "Package/api/package/{packageTitle}/GetPackageByTitleAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "packageTitle",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.PackageController",
+    "Method": "CreatePackageAsync",
+    "RelativePath": "Package/api/package/CreatePackageAsync",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "packageDto",
+        "Type": "Traveler_Compass.Models.DTO.PacakgeDto.CreatePackageDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Traveler_Compass.Models.DTO.PacakgeDto.PackageDTO",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.PackageController",
+    "Method": "GetAllPackageAsync",
+    "RelativePath": "Package/api/package/GetAllPackageAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Traveler_Compass.Models.Domain.Package, Traveler Compass, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.PackageController",
+    "Method": "UpdatePackageAsync",
+    "RelativePath": "Package/api/package/UpdatePackageAsync",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "packageId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "packageDTO",
+        "Type": "Traveler_Compass.Models.DTO.PacakgeDto.CreatePackageDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Traveler_Compass.Models.DTO.PacakgeDto.PackageDTO",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.UserController",
+    "Method": "GetUserByEmailAsync",
+    "RelativePath": "User/api/User/{email}/GetUserByEmailAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.UserController",
+    "Method": "GetUserByNameAsync",
+    "RelativePath": "User/api/Users/{firstName}/{lastName}/GetUserByNameAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "firstName",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "lastName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.UserController",
+    "Method": "DeleteUserAsync",
+    "RelativePath": "User/api/Users/{userId}/DeleteUserAsync",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.UserController",
+    "Method": "GetUserByIdAsync",
+    "RelativePath": "User/api/Users/{userId}/GetByIdAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Traveler_Compass.Models.DTO.UserDto.UserDTO",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.UserController",
+    "Method": "UpdateUserAsync",
+    "RelativePath": "User/api/Users/{userId}/updateUserAsync",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userDto",
+        "Type": "Traveler_Compass.Models.DTO.UserDto.UserDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.UserController",
+    "Method": "CreateUserAsync",
+    "RelativePath": "User/api/Users/CreateUserAsync",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userDto",
+        "Type": "Traveler_Compass.Models.DTO.UserDto.CreateUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Traveler_Compass.Controllers.UserController",
+    "Method": "GetAllUsersAsync",
+    "RelativePath": "User/api/Users/GetAllUserAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Traveler_Compass.Models.DTO.UserDto.UserDTO, Traveler Compass, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

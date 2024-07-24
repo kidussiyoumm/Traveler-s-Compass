@@ -41,6 +41,9 @@ export class AddPackageComponent implements OnInit {
 
   ngOnInit() {
     this.CreateAddPackageForm(); // Initialization logic in ngOnInit to create form
+    this.packageService.getAllPackagesAPI().subscribe(data => {
+      console.log("Api Data:", data);
+    })
   }
 
   // Method to create the addPackageForm FormGroup
