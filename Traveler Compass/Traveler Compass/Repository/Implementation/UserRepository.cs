@@ -202,13 +202,16 @@ namespace Traveler_Compass.Repository.Implementation
                     throw new Exception("Password doesn't match! Please try again");
                 }
 
-                
                 return fetchUser;
-            }catch (Exception ex)
+
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message); 
                 throw new Exception(ex.Message);
             }
+
+            
         }
 
         private bool matchingPassword(string providedPassword, byte[] storedPasswordHash, byte[] storedPasswordKey)

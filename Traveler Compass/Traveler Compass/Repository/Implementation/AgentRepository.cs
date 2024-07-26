@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Security.Cryptography;
 using Traveler_Compass.Data;
 using Traveler_Compass.Models.Domain;
 using Traveler_Compass.Models.DTO.Agent;
@@ -130,6 +131,51 @@ namespace Traveler_Compass.Repository.Implementation
             return selectedId;
         }
 
-       
+        public async Task<Agent> AuthenticateAgent(string email, string password)
+        {
+            try
+            {
+                var fetchUser = await _dbContext.agents.FirstOrDefaultAsync(x => x.email == email);
+
+                if (fetchUser == null)
+                {
+                    throw new Exception($"Invalid {fetchUser}, try again ");
+                }
+
+                if (!matchingPassword(password, fetchUser.password, fetchUser.passwordKey))
+                {
+                    throw new Exception("Password doesn't match! Please try again");
+                }
+
+
+                return fetchUser;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private bool matchingPassword(string providedPassword, byte[] storedPasswordHash, byte[] storedPasswordKey)
+        {
+            using (var hmac = new HMACSHA512(storedPasswordKey))
+            {
+
+                var computeHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(providedPassword));  // converts the passwordText to a passwordHash
+
+                for (int i = 0; i < computeHash.Length; i++)
+                {
+
+                    if (computeHash[i] != storedPasswordHash[i]) //takes the hash and compares to the password 
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+        }
     }
 }
