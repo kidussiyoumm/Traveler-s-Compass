@@ -5,6 +5,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text.RegularExpressions;
 using Traveler_Compass.Data;
@@ -29,8 +30,7 @@ namespace Traveler_Compass.Repository.Implementation
         }
 
     //To get a user from DB
-    [Authorize]
-    [HttpGet]
+   
     public async Task<List<User>>GetAllUsersAsync()
     {
         return await _dbContext.users.ToListAsync();
@@ -46,7 +46,7 @@ namespace Traveler_Compass.Repository.Implementation
         }
 
         //To update current user
-        [Authorize]
+     
         public async Task<User> UpdateUserAsync(int userId, User updatedUser)
         {
           
@@ -190,24 +190,49 @@ namespace Traveler_Compass.Repository.Implementation
             try
             {
                 var fetchUser = await _dbContext.users.FirstOrDefaultAsync(x => x.email == email);
-
+                
                 if (fetchUser == null)
                 {
                     throw new Exception($"Invalid {fetchUser}, try again ");
                 }
+                
+                if(!matchingPassword(password, fetchUser.password , fetchUser.passwordKey))
+                {
+                    throw new Exception("Password doesn't match! Please try again");
+                }
+
                 return fetchUser;
-            }catch (Exception ex)
+
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message); 
                 throw new Exception(ex.Message);
             }
-        }
-        public bool save()
-        {
-            var result =  _dbContext.SaveChanges();
-            return result > 0 ;
+
+            
         }
 
+        private bool matchingPassword(string providedPassword, byte[] storedPasswordHash, byte[] storedPasswordKey)
+        {
+            using ( var hmac = new HMACSHA512(storedPasswordKey))
+            {
+                
+                var computeHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(providedPassword));  // converts the passwordText to a passwordHash
+
+                for(int i = 0; i < computeHash.Length; i++) {
+
+                   if(computeHash[i] != storedPasswordHash[i]) //takes the hash and compares to the password 
+                    {
+                        return false;
+                    }                
+                }
+
+                return true;
+            }
+
+        }
+       
 
 
       

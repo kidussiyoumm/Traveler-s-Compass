@@ -2,6 +2,7 @@
 using Azure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 using Traveler_Compass.Models.Domain;
 using Traveler_Compass.Models.DTO.PacakgeDto;
@@ -16,22 +17,27 @@ namespace Traveler_Compass.Controllers
     public class PackageController : ControllerBase
     {
         private readonly IPackageRepository _packageRepository;
+        private readonly IAgentRepository _agentRespostory;
         private readonly IMapper _mapper;
         public PackageController(IPackageRepository _packageRepository,
+                                 IAgentRepository _agentRespostory,
                                   IMapper _mapper)
         { //Any connection to the data base should be through the repository not directly to the Data base
 
 
             this._packageRepository = _packageRepository;
+            this._agentRespostory = _agentRespostory;
             this._mapper = _mapper; 
 
         }
         [HttpGet]
         [Route("api/package/GetAllPackageAsync")]
-        public async Task<ActionResult<List<Package>>> GetAllPackageAsync()
+        public async Task<ActionResult<List<PackageDTO>>> GetAllPackageAsync()
         {
             var package = await _packageRepository.GetAllPackage();
-            return Ok(package);
+            var packageDTO = package.Select(package => _mapper.Map<PackageDTO>(package)).ToList();
+            
+            return Ok(packageDTO);
         }
         [HttpGet]
         [Route("api/package/{packageId}/GetPackageByIdAsync")]
@@ -43,9 +49,12 @@ namespace Traveler_Compass.Controllers
                 var fetchId = await _packageRepository.GetPackageAsyncById(packageId);
                 if(fetchId == null)
                 {
-                    throw new Exception("{fetchId} not Found");
+                    throw new Exception($"{fetchId} not Found");
                 }
-                return Ok(fetchId); 
+
+                var response = _mapper.Map<PackageDTO>(fetchId);
+
+                return Ok(response); 
 
             }catch(Exception ex)
             {
@@ -64,8 +73,13 @@ namespace Traveler_Compass.Controllers
                     return NotFound();
                 }
 
-               var response = await _packageRepository.GetPackageByNameAsync(packageTitle);
-               return Ok(response);
+               var fetchPackageId = await _packageRepository.GetPackageByNameAsync(packageTitle);
+                if(fetchPackageId == null)
+                {
+                    throw new Exception($"{fetchPackageId} not Found");
+                }
+                var response = _mapper.Map<PackageDTO>(fetchPackageId);
+                return Ok(response);
             }catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
@@ -75,18 +89,30 @@ namespace Traveler_Compass.Controllers
 
         [HttpPost]
         [Route("api/package/CreatePackageAsync")]
-        [Authorize(Roles = "Admin")]
+     // [Authorize(Roles = "Admin")]
         public async Task<ActionResult<PackageDTO>> CreatePackageAsync([FromBody] CreatePackageDTO packageDto)
         {
             try
             {
+                // Validate if the AgentId exists
+                var agentExists = await _agentRespostory.GetAgentIdAsync(packageDto.AgentId);
+                if (agentExists == null)
+                {
+                    return BadRequest("Invalid AgentId.");
+                }
+
                 var ClientData =  _mapper.Map<Package>(packageDto);
-                var databaseCheck = await _packageRepository.CreatePackageAsync(ClientData);
-                var response = _mapper.Map<PackageDTO>(databaseCheck);
+                // Set UserId to null or default if not applicable
+                ClientData.userId = null;
+                var createdPackage = await _packageRepository.CreatePackageAsync(ClientData);
+                var response = _mapper.Map<PackageDTO>(createdPackage);
                
                 return Ok(response);
+
+
             }catch(Exception ex) {
                 Console.WriteLine(ex.Message);
+                return StatusCode(500, "Internal server error");
                 throw;
             }
                      

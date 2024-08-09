@@ -62,23 +62,30 @@ namespace Traveler_Compass.Controllers
         //Fetchs user using a userId
         public async Task<ActionResult<UserDTO>> GetUserByIdAsync(int userId)
         {
-            var fetchedData = await _userRepository.GetUserByIdAsync(userId);
-
-            var mapData = _mapper.Map<UserDTO>(fetchedData);
-            try
+           try
             {
-                if (fetchedData.userId != userId || fetchedData == null)
+                var fetchUserId = await _userRepository.GetUserByIdAsync(userId);
+
+
+                if (fetchUserId == null)
+                {
+                    return NotFound($"User with ID {userId} not found.");
+                }
+
+                if (fetchUserId.userId != userId)
                 {
                     return BadRequest("ID mismatch.");
                 }
-
-            } catch (Exception ex)
+                var mapData = _mapper.Map<UserDTO>(fetchUserId);
+                return Ok(mapData);
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 throw;
             }
 
-            return Ok(mapData);
+            
         }
 
 
@@ -103,6 +110,7 @@ namespace Traveler_Compass.Controllers
                 {
                     //Map the user Entity to the UserDTO
                     var mapData = _mapper.Map<UserDTO>(userName);
+
                     return Ok(mapData);
                 }
                 else

@@ -12,6 +12,12 @@ using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+// Configure logging
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+
 //Allows us to fetch from app.setting and other configurations
 var configuration = builder.Configuration;
 var SecurityKey = configuration.GetSection("Jwt:key").Value;
@@ -62,6 +68,18 @@ builder.Services.AddDbContext<CompassDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CompassAppDbConnectionString"));
 });
 
+// Add CORS services to the container
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyHeader()
+                  .AllowAnyOrigin()
+                  .AllowAnyMethod();
+        });
+});
+
 //Injecting a Service inisde the program.cs file
 //If we want an implementation class coming from the Repository 
 builder.Services.AddScoped<IUserRepository, UserRepository>(); 
@@ -88,7 +106,7 @@ app.UseHttpsRedirection();
 
 //app.UseRouting();
 
-//app.UseCors();
+app.UseCors("AllowAll");
 
 //enable authentication for your API:
 app.UseAuthentication();//This middleware validate the tokem

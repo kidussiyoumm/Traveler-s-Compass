@@ -13,33 +13,29 @@ namespace Traveler_Compass.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //Account controller
     public class AccountController : Controller
     {
         private readonly IUserRepository _userRepository;
-       // private readonly IMapper _mapper;
+        private readonly IAgentRepository _agentRepository;
         private readonly ICreateJWT _createJWT;
-     // private readonly IConfiguration _configuration;
-
-
-
         public AccountController(IUserRepository _userRepository,
-                               //  IMapper _mapper,
+                                 IAgentRepository _agentRepository,
                                  ICreateJWT _createJWT)
-                            //     IConfiguration configuration)
         {
             this._userRepository = _userRepository;
-          // this._mapper = _mapper;
+            this._agentRepository = _agentRepository;
             this._createJWT = _createJWT;
-         // this._configuration = configuration; 
+
         }
 
         [HttpPost]
-        [Route("login")]
+        [Route("login/User")]
         public async Task<IActionResult> Login([FromBody] LoginReqDTO loginReq)
         {
             try
             {
-                if (string.IsNullOrEmpty(loginReq.email) || string.IsNullOrEmpty(loginReq.password)) 
+                if (string.IsNullOrEmpty(loginReq.email) || string.IsNullOrEmpty(loginReq.password))
                 {
                     return BadRequest("Email and password is Required");
                 }
@@ -63,5 +59,40 @@ namespace Traveler_Compass.Controllers
             }
 
         }
+
+        [HttpPost]
+        [Route("login/AsAgent")]
+        public async Task<IActionResult> LoginAgent([FromBody] LoginReqDTO loginReq)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(loginReq.email) || string.IsNullOrEmpty(loginReq.password))
+                {
+                    return BadRequest("Email and password is Required");
+                }
+                var fetchUser = await _agentRepository.AuthenticateAgent(loginReq.email, loginReq.password);
+                if (fetchUser == null)
+                {
+                    return Unauthorized();
+                }
+
+                var loginRes = new LoginResDTO();
+                loginRes.email = fetchUser.email;
+                loginRes.token = _createJWT.CreateJWTAgent(fetchUser);
+
+
+                return Ok(loginRes);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return Unauthorized();
+            }
+
+        }
+
+
+
+
     }
 }

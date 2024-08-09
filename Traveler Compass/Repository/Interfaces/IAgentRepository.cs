@@ -11,9 +11,10 @@ namespace Traveler_Compass.Repository.Interfaces
             Task<List<Agent>> GetAllAgentsAsync();
             Task<Agent> UpdateAgentAsync(int agentId, Agent agent);
             Task<Agent> DeleteAgentAsync(int agentId);
+            Task<Agent> AuthenticateAgent(string email, string password);
 
 
 
-        
+
     }
 }

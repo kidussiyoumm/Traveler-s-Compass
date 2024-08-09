@@ -1,14 +1,62 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Kidus\\Desktop\\Traveler-s-Compass\\Traveler Compass\\",
+  "WorkspaceRootPath": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Kidus\\Desktop\\Traveler-s-Compass\\Traveler Compass\\Traveler Compass\\Data\\CompassDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Traveler Compass\\Data\\CompassDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\repository\\interfaces\\iagentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:repository\\interfaces\\iagentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Kidus\\Desktop\\Traveler-s-Compass\\Traveler Compass\\Traveler Compass\\Properties\\launchSettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Traveler Compass\\Properties\\launchSettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\repository\\implementation\\agentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:repository\\implementation\\agentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\helper\\icreatejwt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:helper\\icreatejwt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\helper\\jwttokenutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:helper\\jwttokenutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\repository\\implementation\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:repository\\implementation\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\repository\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:repository\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\models\\dto\\logindto\\loginreqdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:models\\dto\\logindto\\loginreqdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\models\\dto\\logindto\\loginresdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:models\\dto\\logindto\\loginresdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\controllers\\agentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:controllers\\agentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|c:\\users\\user name\\desktop\\azure travel compass\\travel compass\\traveler compass\\controllers\\packagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC476FB8-EF13-40CA-A842-8A18319D1CEF}|Traveler Compass.csproj|solutionrelative:controllers\\packagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,8 +65,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 215,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -29,30 +77,181 @@
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CompassDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Kidus\\Desktop\\Traveler-s-Compass\\Traveler Compass\\Traveler Compass\\Data\\CompassDbContext.cs",
-              "RelativeDocumentMoniker": "Traveler Compass\\Data\\CompassDbContext.cs",
-              "ToolTip": "C:\\Users\\Kidus\\Desktop\\Traveler-s-Compass\\Traveler Compass\\Traveler Compass\\Data\\CompassDbContext.cs",
-              "RelativeToolTip": "Traveler Compass\\Data\\CompassDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "DocumentIndex": 3,
+              "Title": "JwtTokenUtility.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Helper\\JwtTokenUtility.cs",
+              "RelativeDocumentMoniker": "Helper\\JwtTokenUtility.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Helper\\JwtTokenUtility.cs",
+              "RelativeToolTip": "Helper\\JwtTokenUtility.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-22T02:59:50.054Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-26T02:56:39.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ICreateJWT.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Helper\\ICreateJWT.cs",
+              "RelativeDocumentMoniker": "Helper\\ICreateJWT.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Helper\\ICreateJWT.cs",
+              "RelativeToolTip": "Helper\\ICreateJWT.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAYAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T02:55:52.646Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\Kidus\\Desktop\\Traveler-s-Compass\\Traveler Compass\\Traveler Compass\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Traveler Compass\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\Kidus\\Desktop\\Traveler-s-Compass\\Traveler Compass\\Traveler Compass\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Traveler Compass\\Properties\\launchSettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-17T20:12:52.738Z",
+              "Title": "AgentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Repository\\Implementation\\AgentRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Implementation\\AgentRepository.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Repository\\Implementation\\AgentRepository.cs",
+              "RelativeToolTip": "Repository\\Implementation\\AgentRepository.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAkwD8AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T02:45:14.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IAgentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Repository\\Interfaces\\IAgentRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Interfaces\\IAgentRepository.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Repository\\Interfaces\\IAgentRepository.cs",
+              "RelativeToolTip": "Repository\\Interfaces\\IAgentRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T02:45:18.068Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LoginReqDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Models\\DTO\\LoginDto\\LoginReqDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTO\\LoginDto\\LoginReqDTO.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Models\\DTO\\LoginDto\\LoginReqDTO.cs",
+              "RelativeToolTip": "Models\\DTO\\LoginDto\\LoginReqDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T02:44:02.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-24T01:44:40.771Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Repository\\Implementation\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Implementation\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Repository\\Implementation\\UserRepository.cs",
+              "RelativeToolTip": "Repository\\Implementation\\UserRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAANIAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T02:45:54.105Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AQIAAEEAAAAAAAAAAAAAAFAAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T02:40:42.977Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Repository\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Repository\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "Repository\\Interfaces\\IUserRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T02:48:04.467Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAwwCkAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T02:40:34.197Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LoginResDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Models\\DTO\\LoginDto\\LoginResDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTO\\LoginDto\\LoginResDTO.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Models\\DTO\\LoginDto\\LoginResDTO.cs",
+              "RelativeToolTip": "Models\\DTO\\LoginDto\\LoginResDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T02:44:00.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AgentController.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Controllers\\AgentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AgentController.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Controllers\\AgentController.cs",
+              "RelativeToolTip": "Controllers\\AgentController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T02:40:15.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-26T01:24:38.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PackageController.cs",
+              "DocumentMoniker": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Controllers\\PackageController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PackageController.cs",
+              "ToolTip": "C:\\Users\\User Name\\Desktop\\Azure Travel Compass\\Travel compass\\Traveler Compass\\Controllers\\PackageController.cs",
+              "RelativeToolTip": "Controllers\\PackageController.cs",
+              "ViewState": "AQIAADoAAAAAAAAAAAAUwE8AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-24T00:33:34.777Z"
             }
           ]
         }

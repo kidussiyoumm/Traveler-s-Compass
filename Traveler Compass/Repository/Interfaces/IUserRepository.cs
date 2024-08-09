@@ -12,7 +12,8 @@ namespace Traveler_Compass.Repository.Interfaces
         Task<User> DeleteUserAsync(int userId);
         Task<User> GetUserByIdAsync(int userId);
         Task<User> GetUserByEmailAsync(string email);
-        Task<User> AuthenticateUser(string email,string pasword);
+        Task<User> AuthenticateUser(string email,string password);
+        
        
       
 
